@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.4.4"
+  },
+  "name": "0703htmltailwind",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "build": "npx tailwindcss -i ./app.css -o ./src/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
