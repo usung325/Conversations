@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#video{
+    padding-left: 25%;
+    padding-top: 100px;
+    opacity: 90%;
+    /* pointer-events: none; */
+}

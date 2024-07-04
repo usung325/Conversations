@@ -9,9 +9,32 @@
     <script src="script.js"></script>
 </head>
 
-<body>
+<body class="relative">
+    <div class="inline">
+
+        <div class="text-center my-10">
+            <button onclick="myFunction()" class="outline outline-offset-8 rounded-sm">Click me</button>
+        </div>
+        
+        <div class="text-center my-10">
+            <button onclick="audioFunc()" class="outline outline-offset-8 rounded-sm">Audio</button>
+        </div>
+
+    </div>
+
+    <div class="relative">
+        <div class="fixed" id="demo">
+            <video id="video" width="1200" height="240" autoplay class="">
+                <source src="https://player.vimeo.com/progressive_redirect/download/192512596/container/62b7a02e-f6be-4183-a8d4-bba010c4f456/59c260b0/lower_lows,_higher_highs_:_pants_ride%20%28540p%29.mp4?expires=1720195339&loc=external&signature=34efe3d8ef8170502bd0b83a4ca1abadcf64a5bbf2d8d6ad57855676044260eb" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    
+
     <div class="mx-auto text-center">
-        <h1 class="text-5xl font-bold underline">
+        <h1 class="text-5xl font-bold">
             Conversations With My Straight Boyfriends is a multimedia experience of dance and film influenced heavily by
             popular and counterculture. Idiosyncratic solo choreographed works of dance and film by male identifying
             heterosexuals will be vetted through an open application process. Works will then be selected to be adapted
@@ -39,20 +62,7 @@
         </h1>
     </div>
 
-    <div class="text-center my-10">
-        <button onclick="myFunction()" class="outline outline-offset-8 rounded-sm">Click me</button>
-    </div>
-
-    <div class="" id="demo">
-        <video id="video" width="320" height="240" autoplay class="mx-auto">
-            <source src="https://player.vimeo.com/progressive_redirect/download/192512596/container/62b7a02e-f6be-4183-a8d4-bba010c4f456/59c260b0/lower_lows,_higher_highs_:_pants_ride%20%28540p%29.mp4?expires=1720195339&loc=external&signature=34efe3d8ef8170502bd0b83a4ca1abadcf64a5bbf2d8d6ad57855676044260eb" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-
-    <div class="text-center my-10">
-        <button onclick="audioFunc()" class="outline outline-offset-8 rounded-sm">Audio</button>
-    </div>
+    
 </body>
 
 </html>
