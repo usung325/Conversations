@@ -12,14 +12,16 @@ export default function LandingModel() {
     const plane = useRef();
     // let tick = 100.;
 
-    const { size } = useControls({
-        size: {
-            value: 12.5,
-            min: 0.1,
-            max: 100.0,
-            step: 0.1,
-        }
-    });
+    // const { size } = useControls({
+    //     size: {
+    //         value: 12.5,
+    //         min: 0.1,
+    //         max: 100.0,
+    //         step: 0.1,
+    //     }
+    // });
+
+    const size = 12.5
 
     const texture = useTexture('/images/im1.jpg');
     const width = window.innerWidth;
