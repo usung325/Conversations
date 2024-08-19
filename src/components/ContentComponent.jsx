@@ -23,7 +23,13 @@ export default function ContentComponent() {
                         <div className="flex flex-col my-auto items-start h-screen pl-5">
                             <div className="flex w-full justify-between mt-8">
                                 <NavLink to='/'>
-                                    <p>{city}</p>
+                                    <motion.p
+                                        whileHover={{ scale: 1.5 }}
+                                        onHoverStart={e => { }}
+                                        onHoverEnd={e => { }}
+                                        className="w-auto">
+                                        {city}
+                                    </motion.p>
                                 </NavLink>
                                 <p>Oct 5 2024</p>
                             </div>
