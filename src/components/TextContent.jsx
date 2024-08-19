@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function TextContent() {
     return (
-        <div className="flex items-end gap-x-10 pt-14">
+        <div className="flex items-end gap-x-10 pt-16">
 
             <div className="flex-auto items-start ">
 
