@@ -87,7 +87,7 @@ export default function App() {
     createRoutesFromElements(
       <Route path="/" element={<RootLoayout />}>
         <Route index element={<LandingComponent images={images} />} />
-        <Route path=":city" element={<ContentComponent />} />
+        <Route path=":city" element={<ContentComponent images={images} />} />
       </Route>
     )
   )

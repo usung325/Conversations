@@ -1,19 +1,18 @@
 import React from 'react'
 
-export default function TextContent() {
+export default function TextContent({ vidRef }) {
     return (
         <div className="flex items-end gap-x-10 pt-16">
 
             <div className="flex-auto items-start ">
 
                 <div className="flex flex-col items-end gap-2 mb-5">
-                    <p>by Michael Parmelee</p>
+                    <p>by Anthony Alterio</p>
                     <p className="w-[25em]">
-                        January 13, when they put him into a separate room. By then, he was dying.It seems strange now, looking back: here was my father, taken in by the FBI, and yet no one stopped my brother at the Selective Service Board. He passed and got into the Service just like that. My father saw him in his uniform, and cowered, thinking he was a guard.at you up?"
-                        I said, "I'm okay; no one's touched me. I even still have my job." But I guess in his mind I was beaten up.
-                        The brother who had been at Berkeley had come home and immediately joined the Army. He came home around 5 P.M. and the next morning around 8 A.M. the nurse awakened us, saying he was dead. When he came home, there wMy mother went to see my father as often as was permitted, but my brothers and I weren't allowed to visit him until A week later, on the 20th, we got word from the hospital that my father was being released that day. We were overjoyed, but also wary. It turned out that the reason they were letting him go was because he was dying.  He was emaciated. And his mind seemed to be deteriorating. I guess maybe the hours and hours of interrogation from December 7 to the time we had seen him, which was over a month, could have done something to his mind. He looked at me and said, "Who beas no way to communicate; he couldn't talk.
+                        Ut dignissim nibh id ante porttitor, et mollis nibh sollicitudin. Integer in neque nec enim iaculis pellentesque. Fusce condimentum, arcu in semper tincidunt, purus sapien commodo dui, id suscipit mi metus a ex. Nunc lectus arcu, viverra non lobortis sed, vehicula quis massa. In tincidunt, tortor vitae porta consequat, augue dolor scelerisque sem, vel rhoncus nisl neque sit amet lorem. Vestibulum tempor est quis blandit eleifend. Fusce nisl metus, sodales in sagittis quis, lacinia in turpis. Aliquam mollis tortor et felis malesuada efficitur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed aliquam tellus metus, vitae ultricies quam cursus in. Integer sit amet magna mi. Suspendisse elementum ultrices est, id feugiat erat luctus et. Vestibulum dictum, ipsum quis commodo fermentum, felis dolor varius est, sed consectetur ex est et leo. Integer neque mauris, volutpat vel diam a, finibus luctus metus. Curabitur non elementum elit, id volutpat justo. Integer interdum venenatis mattis.
                     </p>
                 </div>
+
                 <div className="flex flex-col gap-3">
                     <p>choreo: male identifying heterosexual body</p>
                     <p>performance: my lgbtqia+ body</p>
@@ -21,7 +20,13 @@ export default function TextContent() {
             </div>
 
 
-            <img src="/images/imVid.png" className="h-[50em]" />
+            {/* <img src="/images/imAnthony.png" className="h-[50em]" /> */}
+            <video width="500" height="auto" autoPlay muted>
+                <source src={`/images/${vidRef}`} type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+
+
 
         </div>
     )

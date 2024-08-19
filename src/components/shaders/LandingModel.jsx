@@ -17,7 +17,7 @@ export default function LandingModel() {
             value: 12.5,
             min: 0.1,
             max: 100.0,
-            step: 0.1
+            step: 0.1,
         }
     });
 
@@ -56,14 +56,16 @@ export default function LandingModel() {
     console.log(size);
 
     return (
-        <mesh ref={plane} scale={scale}>
-            <planeGeometry args={[1, 1, 64, 64]} />
-            <shaderMaterial
-                vertexShader={vertex}
-                fragmentShader={fragment}
-                uniforms={uniforms.current}
-                wireframe={false}
-            />
-        </mesh>
+        <>
+            <mesh ref={plane} scale={scale}>
+                <planeGeometry args={[1, 1, 64, 64]} />
+                <shaderMaterial
+                    vertexShader={vertex}
+                    fragmentShader={fragment}
+                    uniforms={uniforms.current}
+                    wireframe={false}
+                />
+            </mesh>
+        </>
     )
 }

@@ -46,13 +46,13 @@ export default function ContentComponent() {
                     <div className="space-y-52">
                         <SnapScrollContainer>
                             <div>
-                                <TextContent />
+                                <TextContent vidRef="vid2.mp4" />
                             </div>
                             <div>
-                                <TextContent />
+                                <TextContent vidRef="vid3.mp4" />
                             </div>
                             <div>
-                                <TextContent />
+                                <TextContent vidRef="vid1.mp4" />
                             </div>
                         </SnapScrollContainer>
                     </div>
