@@ -19,6 +19,8 @@ export default function SnapScrollContainer({ children }) {
     const [pageIndex, setPageIndex] = useState(0);
     const pageNav = [0, 1, 2];
 
+
+
     const handleScroll = useCallback(debounce(() => {
         if (!isScrolling) {
             setIsScrolling(true);
@@ -26,6 +28,7 @@ export default function SnapScrollContainer({ children }) {
             const containerHeight = container.clientHeight;
             const scrollTop = container.scrollTop;
             const currentSection = Math.round(scrollTop / containerHeight);
+
 
 
 

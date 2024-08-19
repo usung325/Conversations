@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider, createRoutesFromElements, BrowserR
 import './App.css'
 import LandingComponent from './components/LandingComponent'
 import ContentComponent from './components/ContentComponent'
-import RootLoayout from './components/layouts/RootLayout'
+import RootLayout from './components/layouts/RootLayout'
 
 export default function App() {
 
@@ -56,7 +56,7 @@ export default function App() {
       height: 15,
       alt: 'Description of image 2',
       description: 'Chicago IL',
-      vidList: ['vid2.mp4', 'vid1.mp4', 'vid3.mp4']
+      vidList: ['vid3.mp4', 'vid3.mp4', 'vid3.mp4']
     },
     {
       src: '/images/im3.png',
@@ -68,7 +68,7 @@ export default function App() {
       height: 15,
       alt: 'Description of image 1',
       description: 'Sydney',
-      vidList: ['vid2.mp4', 'vid1.mp4', 'vid3.mp4']
+      vidList: ['vid1.mp4', 'vid2.mp4', 'vid3.mp4']
     },
     {
       src: '/images/im3.png',
@@ -80,7 +80,7 @@ export default function App() {
       height: 15,
       alt: 'Description of image 2',
       description: 'Providence RD',
-      vidList: ['vid2.mp4', 'vid1.mp4', 'vid3.mp4']
+      vidList: ['vid2.mp4', 'vid2.mp4', 'vid3.mp4']
     },
     {
       src: '/images/im3.png',
@@ -92,14 +92,14 @@ export default function App() {
       height: 15,
       alt: 'Description of image 2',
       description: 'Suwanee GA',
-      vidList: ['vid2.mp4', 'vid1.mp4', 'vid3.mp4']
+      vidList: ['vid3.mp4', 'vid1.mp4', 'vid1.mp4']
     },
     // ... other images
   ];
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<RootLoayout />}>
+      <Route path="/" element={<RootLayout />}>
         <Route index element={<LandingComponent images={images} />} />
         <Route path=":city" element={<ContentComponent images={images} />} />
       </Route>

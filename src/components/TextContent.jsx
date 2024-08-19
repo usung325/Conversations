@@ -1,8 +1,27 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 
 export default function TextContent({ vidRef }) {
+    const videoRef = useRef(null);
+    const containerRef = useRef(null);
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.load();
+        }
+
+
+        // containerRef.current
+        // containerRef.current.scrollIntoView({
+        //     top: 0,
+        //     behavior: 'instant',
+        // });
+
+
+    }, [vidRef]);
+
+
     return (
-        <div className="flex items-end gap-x-10 pt-16">
+        <div ref={containerRef} className="flex items-end gap-x-10 pt-16">
 
             <div className="flex-auto items-start ">
 
@@ -21,7 +40,7 @@ export default function TextContent({ vidRef }) {
 
 
             {/* <img src="/images/imAnthony.png" className="h-[50em]" /> */}
-            <video width="500" height="auto" autoPlay muted>
+            <video ref={videoRef} width="500" height="auto" autoPlay muted>
                 <source src={`/images/${vidRef}`} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
