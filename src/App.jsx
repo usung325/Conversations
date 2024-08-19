@@ -6,6 +6,7 @@ import './App.css'
 import LandingComponent from './components/LandingComponent'
 import ContentComponent from './components/ContentComponent'
 import RootLayout from './components/layouts/RootLayout'
+import { Analytics } from "@vercel/analytics/react"
 
 export default function App() {
 
@@ -109,6 +110,7 @@ export default function App() {
   return (
     <>
       <RouterProvider router={router} />
+      <Analytics />
     </>
   )
 }
