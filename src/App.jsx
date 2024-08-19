@@ -13,72 +13,86 @@ export default function App() {
     {
       src: '/images/im3.png',
       link: '/Pittsburgh',
+      city: 'Pittsburgh',
       x: 100,
       y: 200,
       width: 20,
       height: 15,
       alt: 'Description of image 1',
-      description: 'Pittsburgh PA'
+      description: 'Pittsburgh PA',
+      vidList: ['vid1.mp4', 'vid1.mp4', 'vid2.mp4']
     },
     {
       src: '/images/im3.png',
-      link: '/NewYork',
+      link: '/New York',
+      city: 'New York',
       x: 400,
       y: 300,
       width: 20,
       height: 15,
       alt: 'Description of image 2',
-      description: 'New York NY'
+      description: 'New York NY',
+      vidList: ['vid2.mp4', 'vid1.mp4', 'vid3.mp4']
     },
     {
       src: '/images/im3.png',
-      link: '/LA',
+      link: '/Los Angeles',
+      city: 'Los Angeles',
       x: 300,
       y: 600,
       width: 20,
       height: 15,
       alt: 'Description of image 1',
-      description: 'Los Angeles CA'
+      description: 'Los Angeles CA',
+      vidList: ['vid3.mp4', 'vid3.mp4', 'vid1.mp4']
     },
     {
       src: '/images/im3.png',
       link: '/Chicago',
+      city: 'Chicago',
       x: 800,
       y: 300,
       width: 20,
       height: 15,
       alt: 'Description of image 2',
-      description: 'Chicago IL'
+      description: 'Chicago IL',
+      vidList: ['vid2.mp4', 'vid1.mp4', 'vid3.mp4']
     },
     {
       src: '/images/im3.png',
       link: '/Sydney',
+      city: 'Sydney',
       x: -100,
       y: -200,
       width: 20,
       height: 15,
       alt: 'Description of image 1',
-      description: 'Sydney'
+      description: 'Sydney',
+      vidList: ['vid2.mp4', 'vid1.mp4', 'vid3.mp4']
     },
     {
       src: '/images/im3.png',
       link: '/Providence',
+      city: 'Providence',
       x: -400,
       y: 300,
       width: 20,
       height: 15,
       alt: 'Description of image 2',
-      description: 'Providence RD'
+      description: 'Providence RD',
+      vidList: ['vid2.mp4', 'vid1.mp4', 'vid3.mp4']
     },
     {
       src: '/images/im3.png',
       link: '/Suwanee',
+      city: 'Suwanee',
       x: 700,
       y: -250,
       width: 20,
       height: 15,
       alt: 'Description of image 2',
-      description: 'Suwanee GA'
+      description: 'Suwanee GA',
+      vidList: ['vid2.mp4', 'vid1.mp4', 'vid3.mp4']
     },
     // ... other images
   ];

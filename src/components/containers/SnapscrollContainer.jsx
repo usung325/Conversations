@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 
+
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -15,6 +16,8 @@ function debounce(func, wait) {
 export default function SnapScrollContainer({ children }) {
     const containerRef = useRef(null);
     const [isScrolling, setIsScrolling] = useState(false);
+    const [pageIndex, setPageIndex] = useState(0);
+    const pageNav = [0, 1, 2];
 
     const handleScroll = useCallback(debounce(() => {
         if (!isScrolling) {
@@ -24,14 +27,25 @@ export default function SnapScrollContainer({ children }) {
             const scrollTop = container.scrollTop;
             const currentSection = Math.round(scrollTop / containerHeight);
 
+
+
             container.scrollTo({
                 top: currentSection * containerHeight,
-                behavior: 'smooth'
+                behavior: 'smooth',
             });
 
             // Reset isScrolling after animation completes
             setTimeout(() => setIsScrolling(false), 1000);
         }
+
+
+        const container = containerRef.current;
+        const containerHeight = container.clientHeight;
+        const scrollTop = container.scrollTop;
+        const currentSection = Math.round(scrollTop / containerHeight);
+        setPageIndex(Math.round(currentSection * containerHeight / 1080));
+
+
     }, 50), [isScrolling]);
 
     useEffect(() => {
@@ -44,16 +58,26 @@ export default function SnapScrollContainer({ children }) {
     }, [handleScroll]);
 
     return (
-        <div
-            ref={containerRef}
-            className="h-screen overflow-y-auto snap-y snap-mandatory"
-            style={{ scrollBehavior: 'smooth' }}
-        >
-            {React.Children.map(children, (child, index) => (
-                <div key={index} className="h-screen snap-start">
-                    {child}
+        <div className="flex flex-row gap-10 justify-center items-center">
+
+            <div
+                ref={containerRef}
+                className="h-screen overflow-y-auto snap-y snap-mandatory"
+                style={{ scrollBehavior: 'smooth' }}
+            >
+                {React.Children.map(children, (child, index) => (
+                    <div key={index} className="h-screen snap-start">
+                        {child}
+                    </div>
+                ))}
+            </div>
+            <div>
+                <div className="flex flex-col gap-2">
+                    {pageNav.map((page, i) => (
+                        pageIndex === i ? <img src="/images/active.png" className="max-w-2" /> : <img src="/images/inactive.png" className="max-w-2" />
+                    ))}
                 </div>
-            ))}
+            </div>
         </div>
     );
 }
