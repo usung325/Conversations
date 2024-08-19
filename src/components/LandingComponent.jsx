@@ -99,6 +99,9 @@ const LandingComponent = ({ images = [] }) => {
 
     return (
         <>
+            <div className="absolute left-1/2 ransform -translate-x-1/2 w-full text-center top-5">
+                <p className="text-black text-sm inline-block ">Conversations With My Straight Boyfriends</p>
+            </div>
             <div
                 ref={containerRef}
                 className="w-full h-screen overflow-hidden relative"

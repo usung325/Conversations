@@ -49,10 +49,10 @@ export default function ContentComponent() {
                                 <TextContent vidRef="vid2.mp4" />
                             </div>
                             <div>
-                                <TextContent vidRef="vid3.mp4" />
+                                <TextContent vidRef="vid1.mp4" />
                             </div>
                             <div>
-                                <TextContent vidRef="vid1.mp4" />
+                                <TextContent vidRef="vid3.mp4" />
                             </div>
                         </SnapScrollContainer>
                     </div>

@@ -6,7 +6,9 @@ import LandingComponent from '../LandingComponent'
 export default function RootLoayout() {
     return (
         <>
+
             <main>
+
                 <Outlet />
             </main>
         </>
