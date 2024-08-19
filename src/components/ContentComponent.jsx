@@ -38,16 +38,17 @@ export default function ContentComponent({ images }) {
                                 </NavLink>
                                 <p>Oct 5 2024</p>
                             </div>
-                            <div className="flex flex-col justify-between h-[30%] my-auto items-start">
-                                {cityList.map((city, i) => (
-                                    <NavLink to={`/${city}`}>
+                            <div className="flex flex-col justify-between h-[40%] my-auto items-start">
+                                {cityList.map((currCity, i) => (
+                                    <NavLink to={`/${currCity}`}>
                                         <motion.p
                                             whileHover={{ scale: 1.5 }}
                                             onHoverStart={e => { }}
                                             onHoverEnd={e => { }}
                                             key={i}
-                                            className="w-auto"
-                                        >{city}</motion.p>
+
+                                            className={`${currCity === city ? 'text-2xl' : ''}`}
+                                        >{currCity}</motion.p>
                                     </NavLink>
                                 ))}
                             </div>
