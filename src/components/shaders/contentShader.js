@@ -58,12 +58,12 @@ export const fragment = `
         tuv.y += sin(tuv.x*frequency*1.5+speed)/(amplitude*.5);
         
         // Updated color definitions (converted from hex to RGB, normalized to 0-1)
-        vec3 color1 = vec3(0.929, 0.890, 0.969);  // EDE3F7
-        vec3 color2 = vec3(0.725, 0.800, 0.486);  // B9CC7C
-        vec3 color3 = vec3(0.780, 0.471, 0.412);  // C77869
-        vec3 color4 = vec3(0.769, 0.478, 0.671);  // C47AAB
-        vec3 color5 = vec3(0.627, 0.820, 0.918);  // A0D1EA
-        vec3 color6 = vec3(0.584, 0.588, 0.631);  // 9596A1
+        vec3 color1 = vec3(0.000, 0.000, 0.999);  // EDE3F7
+        vec3 color2 = vec3(0.874, 0.968, 0.776);  // B9CC7C
+        vec3 color3 = vec3(0.925, 0.509, 0.933);  // C77869
+        vec3 color4 = vec3(0.768, 0.364, 0.192);  // C47AAB
+        vec3 color5 = vec3(0.933, 0.858, 0.172);  // A0D1EA
+        vec3 color6 = vec3(0.090, 0.545, 0.874);  // 9596A1
         
         // Create three layers using pairs of colors
         vec3 layer1 = mix(color1, color2, S(-.3, .2, (tuv*Rot(radians(-5.))).x));
