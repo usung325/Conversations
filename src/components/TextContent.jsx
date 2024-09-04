@@ -39,12 +39,13 @@ export default function TextContent({ vidRef }) {
                     </div>
                 </div>
 
-
+                <div className="w-[60%] video-wrapper">
+                    <video ref={videoRef} width="500" height="auto" autoPlay muted>
+                        <source src={`/images/${vidRef}`} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
                 {/* <img src="/images/imAnthony.png" className="h-[50em]" /> */}
-                <video ref={videoRef} width="500" height="auto" autoPlay muted>
-                    <source src={`/images/${vidRef}`} type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
 
 
 
