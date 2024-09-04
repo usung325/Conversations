@@ -101,7 +101,7 @@ const LandingComponent = ({ images = [] }) => {
         <>
             <div className="absolute left-1/2 ransform -translate-x-1/2 w-full text-center top-5  z-[900]">
                 {/* <img src="./images/Logo.png" className="absolute top-5 left-20 w-[2em]" /> */}
-                <p className="text-[5em] inline-block"> Conversations With My Straight Boyfriends </p>
+                <p className="text-[400%] inline-block"> Conversations With My Straight Boyfriends </p>
                 {/* <p className="text-black text-sm inline-block ">Conversations With My Straight Boyfriends</p> */}
             </div>
             <div
