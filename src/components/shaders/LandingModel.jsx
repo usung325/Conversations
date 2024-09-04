@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react'
-import { vertex, fragment } from './landingShader'
+import { vertex, fragment } from './landingShader2'
 import { useTexture, useAspect } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
@@ -10,7 +10,7 @@ export default function LandingModel() {
 
 
     const plane = useRef();
-    // let tick = 100.;
+    let tick = 100.;
 
     // const { size } = useControls({
     //     size: {
@@ -35,7 +35,7 @@ export default function LandingModel() {
 
     useFrame((state) => {
         let tick = state.clock.getElapsedTime();
-        plane.current.material.uniforms.iTime.value = tick + 20;
+        plane.current.material.uniforms.iTime.value = tick;
         plane.current.material.uniforms.uTexture.value = texture;
         plane.current.material.uniforms.uSize.value = size;
 
@@ -60,7 +60,7 @@ export default function LandingModel() {
     return (
         <>
             <mesh ref={plane} scale={scale}>
-                <planeGeometry args={[1, 1, 64, 64]} />
+                <planeGeometry args={[2, 2, 300, 300]} />
                 <shaderMaterial
                     vertexShader={vertex}
                     fragmentShader={fragment}
