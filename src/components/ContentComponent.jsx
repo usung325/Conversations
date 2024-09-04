@@ -26,7 +26,7 @@ export default function ContentComponent({ images }) {
                     <div className="w-[15em]">
 
                         <div className="flex flex-col my-auto items-start h-screen pl-5">
-                            <div className="flex w-full justify-between mt-8">
+                            <div className="flex w-full justify-between mt-8 pl-20">
                                 <NavLink to='/'>
                                     <motion.p
                                         whileHover={{ scale: 1.5 }}
