@@ -58,7 +58,7 @@ export default function ContentComponent({ images }) {
 
                     <div className="flex space-y-52 mx-auto">
                         <SnapScrollContainer>
-                            <div>
+                            <div >
                                 <TextContent vidRef={vidList[0]} />
                             </div>
                             <div>
