@@ -61,7 +61,7 @@ export default function SnapScrollContainer({ children }) {
     }, [handleScroll]);
 
     return (
-        <div className="flex flex-row justify-center items-center w-3/4 mx-auto">
+        <div className="flex flex-row justify-center items-center gap-2 w-4/5 mx-auto">
 
             <div
                 ref={containerRef}
