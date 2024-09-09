@@ -106,7 +106,7 @@ const LandingComponent = ({ images = [] }) => {
                 {/* <p className="text-black text-sm inline-block ">Conversations With My Straight Boyfriends</p> */}
             </div>
             <div
-                className="absolute left-1/2 tansform -translate-x-1/2 translate-y-[80vh] z-[900]">
+                className="absolute left-1/2 tansform -translate-x-1/2 translate-y-[75vh] z-[900]">
                 <DanceButton />
             </div>
             <div
