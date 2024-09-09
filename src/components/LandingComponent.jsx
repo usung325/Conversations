@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion } from "framer-motion";
 import { NavLink } from 'react-router-dom';
 import LandingScene from './shaders/LandingScene';
+import DanceButton from './DanceButton';
 
 const LandingComponent = ({ images = [] }) => {
     const containerRef = useRef(null);
@@ -99,10 +100,14 @@ const LandingComponent = ({ images = [] }) => {
 
     return (
         <>
-            <div className="absolute left-1/2 ransform -translate-x-1/2 w-full text-center top-5  z-[900]">
+            <div className="absolute left-1/2 tansform -translate-x-1/2 w-full text-center top-5  z-[900]">
                 {/* <img src="./images/Logo.png" className="absolute top-5 left-20 w-[2em]" /> */}
                 <p className="text-[400%] inline-block"> Conversations With My Straight Boyfriends </p>
                 {/* <p className="text-black text-sm inline-block ">Conversations With My Straight Boyfriends</p> */}
+            </div>
+            <div
+                className="absolute left-1/2 tansform -translate-x-1/2 translate-y-[80vh] z-[900]">
+                <DanceButton />
             </div>
             <div
                 ref={containerRef}
@@ -152,7 +157,7 @@ const LandingComponent = ({ images = [] }) => {
                                 </NavLink>
                             </nav>
                             {hoveredImage === img && img.description && (
-                                <div className="absolute bottom-0 left-7 right-0 top-4 text-white p-2 text-sm  w-[300px]">
+                                <div className="absolute bottom-0 left-24 right-0 top-64 text-white p-2 text-lg w-[300px]">
                                     <p className="hitespace-nowrap overflow-hidden text-overflow-ellipsis">
                                         {img.description}
                                     </p>

@@ -23,7 +23,7 @@ export default function ContentComponent({ images }) {
 
             <div className="flex flex-col mx-10 text-white max-h-screen">
                 <div className="flex flex-row justify-between">
-                    <div className="w-[15em]">
+                    {/* <div className="w-[15em]">
 
                         <div className="flex flex-col my-auto items-start h-screen pl-5">
                             <div className="flex w-full justify-between mt-8 pl-20">
@@ -53,12 +53,10 @@ export default function ContentComponent({ images }) {
                                 ))}
                             </div>
                         </div>
+                    </div> */}
 
 
-                    </div>
-
-
-                    <div className="space-y-52">
+                    <div className="flex space-y-52 mx-auto">
                         <SnapScrollContainer>
                             <div>
                                 <TextContent vidRef={vidList[0]} />

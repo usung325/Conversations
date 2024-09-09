@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react'
+import SnapScrollContainer from './containers/SnapscrollContainer';
 
 export default function TextContent({ vidRef }) {
     const videoRef = useRef(null);
@@ -21,7 +22,7 @@ export default function TextContent({ vidRef }) {
 
 
     return (
-        <div className="flex h-screen">
+        <div className="flex h-screen w-4/5">
             <div ref={containerRef} className="flex items-end gap-x-10 my-auto">
 
                 <div className="flex-auto items-start ">
