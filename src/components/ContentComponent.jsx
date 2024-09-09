@@ -59,7 +59,7 @@ export default function ContentComponent({ images }) {
                         <div className="flex mx-auto m-10">
                             <p>{city}</p>
                         </div>
-                        <div className="flex space-y-52">
+                        <div className="flex space-y-52 -my-10">
                             <SnapScrollContainer>
                                 <div >
                                     <TextContent vidRef={vidList[0]} />
