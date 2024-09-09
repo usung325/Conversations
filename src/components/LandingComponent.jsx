@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion } from "framer-motion";
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import LandingScene from './shaders/LandingScene';
 import DanceButton from './DanceButton';
 
@@ -12,7 +12,27 @@ const LandingComponent = ({ images = [] }) => {
     const [hoveredImage, setHoveredImage] = useState(null);
 
     const [velocity, setVelocity] = useState({ x: 0, y: 0 });
+
     const [isWrapping, setIsWrapping] = useState(false);
+    const navigate = useNavigate();
+
+
+
+    const possibleUrls = [
+        '/Los Angeles',
+        '/Pittsburgh',
+        '/New York',
+        '/Sydney',
+        '/Providence',
+        '/Chicago'
+    ];
+
+    const handleRandomNavigation = useCallback((e) => {
+        e.preventDefault();
+        const randomIndex = Math.floor(Math.random() * possibleUrls.length);
+        const randomUrl = possibleUrls[randomIndex];
+        navigate(randomUrl);
+    }, [navigate, possibleUrls]);
 
 
     const handleMouseDown = (e) => {
@@ -105,10 +125,11 @@ const LandingComponent = ({ images = [] }) => {
                 <p className="text-[400%] inline-block"> Conversations With My Straight Boyfriends </p>
                 {/* <p className="text-black text-sm inline-block ">Conversations With My Straight Boyfriends</p> */}
             </div>
-            <div
-                className="absolute left-1/2 tansform -translate-x-1/2 translate-y-[75vh] z-[900]">
-                <DanceButton />
-            </div>
+            <Link to="#" onClick={handleRandomNavigation}>
+                <div className="absolute left-1/2 tansform -translate-x-1/2 translate-y-[75vh] z-[900]">
+                    <DanceButton />
+                </div>
+            </Link>
             <div
                 ref={containerRef}
                 className="w-full h-screen overflow-hidden relative"
