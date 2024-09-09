@@ -68,6 +68,9 @@ export default function ContentComponent({ images }) {
                                 <TextContent vidRef={vidList[2]} />
                             </div>
                         </SnapScrollContainer>
+                        <div className="absolute left-1/2 tansform -translate-x-1/2 translate-y-[10vh]">
+                            <p>{city}</p>
+                        </div>
                     </div>
 
                 </div>
