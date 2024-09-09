@@ -21,7 +21,7 @@ export default function ContentComponent({ images }) {
     return (
         <>
 
-            <div className="flex flex-col mx-10 text-white max-h-screen">
+            <div className="flex flex-col mx-10 text-white max-h-screen overflow-hidden">
                 <div className="flex flex-row justify-between">
                     {/* <div className="w-[15em]">
 
@@ -55,21 +55,22 @@ export default function ContentComponent({ images }) {
                         </div>
                     </div> */}
 
-
-                    <div className="flex space-y-52 mx-auto">
-                        <SnapScrollContainer>
-                            <div >
-                                <TextContent vidRef={vidList[0]} />
-                            </div>
-                            <div>
-                                <TextContent vidRef={vidList[1]} />
-                            </div>
-                            <div>
-                                <TextContent vidRef={vidList[2]} />
-                            </div>
-                        </SnapScrollContainer>
-                        <div className="absolute left-1/2 tansform -translate-x-1/2 -translate-y-[10vh]">
+                    <div className="flex flex-col mx-auto">
+                        <div className="flex mx-auto m-10">
                             <p>{city}</p>
+                        </div>
+                        <div className="flex space-y-52">
+                            <SnapScrollContainer>
+                                <div >
+                                    <TextContent vidRef={vidList[0]} />
+                                </div>
+                                <div>
+                                    <TextContent vidRef={vidList[1]} />
+                                </div>
+                                <div>
+                                    <TextContent vidRef={vidList[2]} />
+                                </div>
+                            </SnapScrollContainer>
                         </div>
                     </div>
 
