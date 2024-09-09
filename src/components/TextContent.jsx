@@ -22,7 +22,7 @@ export default function TextContent({ vidRef }) {
 
 
     return (
-        <div className="flex h-screen w-4/5">
+        <div className="flex h-screen">
             <div ref={containerRef} className="flex items-end gap-x-10 my-auto">
 
                 <div className="flex-auto items-start ">
@@ -40,7 +40,7 @@ export default function TextContent({ vidRef }) {
                     </div>
                 </div>
 
-                <div className="w-[60%] video-wrapper">
+                <div className="w-[100%] video-wrapper">
                     <video ref={videoRef} width="500" height="auto" autoPlay muted>
                         <source src={`/images/${vidRef}`} type="video/mp4" />
                         Your browser does not support the video tag.
