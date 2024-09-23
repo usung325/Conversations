@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import { createBrowserRouter, RouterProvider, createRoutesFromElements, BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom'
+// import { createBrowserRouter, RouterProvider, createRoutesFromElements, BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import './App.css'
 import LandingComponent from './components/LandingComponent'
 import ContentComponent from './components/ContentComponent'
@@ -99,20 +100,28 @@ export default function App() {
     // ... other images
   ];
 
-  const router = createBrowserRouter(
+  // const router = createBrowserRouter(
 
-    createRoutesFromElements(
-      <Route path="/" element={<RootLayout />}>
-        <Route index element={<DragLayout images={images} />} />
-        <Route path=":city" element={<ContentComponent images={images} />} />
-      </Route>
-    )
-  )
+  //   createRoutesFromElements(
+  //     <Route path="/" element={<RootLayout />}>
+  //       <Route index element={<DragLayout images={images} />} />
+  //       <Route path=":city" element={<ContentComponent images={images} />} />
+  //     </Route>
+  //   )
+  // )
 
+  const location = useLocation()
   return (
     <>
-      <RouterProvider router={router} />
-      <Analytics />
+
+      <Routes location={location} key={location.pathname} element={<RootLayout />}>
+        <Route index element={<DragLayout images={images} />} />
+        <Route path=":city" element={<ContentComponent images={images} />} />
+      </Routes>
+
+
+      {/* <RouterProvider router={router} />
+      <Analytics /> */}
     </>
   )
 }
