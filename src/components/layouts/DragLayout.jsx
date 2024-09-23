@@ -184,7 +184,7 @@ export default function DragLayout({ images }) {
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            if (!pos.isDragging || !pos.isRandoming) {
+            if (!pos.isDragging && !pos.isRandoming) {
                 handleCentering()
             }
         }, 2000);
