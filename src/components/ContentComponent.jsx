@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from "framer-motion"
 import { useParams } from 'react-router-dom'
 import TextContent from './TextContent'
@@ -11,16 +11,78 @@ import PageIndex from './PageIndex'
 export default function ContentComponent({ images }) {
     const { city } = useParams();
     const cityList = ['Pittsburgh', 'New York', 'Los Angeles', 'Chicago', 'Sydney', 'Providence', 'Suwanee']
-
+    const [opacityVal, setOpacityVal] = useState(1);
     const vidList = images.find(e => e.city === city).vidList;
-
     console.log(vidList[0]);
 
+    const oneViewWidth = window.innerWidth / 100
+    const oneViewHeight = window.innerHeight / 100
 
+    let pageImagesIndex = 0;
+
+    for (let i = 0; i < images.length; i++) {
+        if (images[i].city === city) {
+            pageImagesIndex = i
+        }
+    }
+    console.log('this is the curr index:' + pageImagesIndex)
+
+    function calculateRelativePositions(images, referenceIndex = 0) {
+        const referenceImage = images[referenceIndex];
+
+        return images.map((image, index) => {
+            if (index === referenceIndex) {
+                return { ...image, relativeX: 0, relativeY: 0 };
+            }
+
+            return {
+                ...image,
+                relativeX: image.x - referenceImage.x,
+                relativeY: image.y - referenceImage.y
+            };
+        });
+    }
+
+    const imagesWithRelativePositions = calculateRelativePositions(images, pageImagesIndex);
+    console.log(imagesWithRelativePositions)
+    const newImages = imagesWithRelativePositions.filter(im => im.city !== city)
+
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setOpacityVal((prevOpacity) => {
+                if (prevOpacity <= 0) {
+                    clearInterval(timer);
+                    return 0;
+                }
+                return Math.max(prevOpacity - 0.01, 0);
+            });
+        }, 30);
+
+        return () => clearInterval(timer);
+    }, []);
 
     return (
         <>
+            {opacityVal > 0 && <div className="absolute top-0 left-0">
+                {newImages.map((eachIm, index) => (
+                    <div
+                        style={{
+                            left: eachIm.relativeX * 4 + (10 * oneViewWidth),
+                            top: eachIm.relativeY * 2 + (50 * oneViewHeight),
+                            width: eachIm.width * oneViewWidth / 5,
+                            position: 'absolute',
+                            opacity: opacityVal
 
+                        }}
+                    >
+                        <NavLink
+                            to={eachIm.link}>
+                            <img src={eachIm.src} />
+                        </NavLink>
+                    </div>
+                ))}
+            </div>}
             <div className="flex flex-col mx-10 text-white max-h-screen overflow-hidden">
                 <div className="flex flex-row justify-between">
                     {/* <div className="w-[15em]">

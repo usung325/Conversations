@@ -4,7 +4,7 @@ import { motion, useAnimate } from 'framer-motion'
 import { NavLink } from 'react-router-dom'
 import DanceButton from '../DanceButton';
 
-export default function DragLayout({ images = [] }) {
+export default function DragLayout({ images }) {
 
     const [pos, dispatch] = useReducer(reducer, { x: 0, y: 0, offX: 0, offY: 0, isDragging: false })
     const [scope, aniamte] = useAnimate()
