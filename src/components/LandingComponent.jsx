@@ -7,7 +7,7 @@ import DanceButton from './DanceButton';
 const LandingComponent = ({ images = [] }) => {
     const containerRef = useRef(null);
     const [isDragging, setIsDragging] = useState(false);
-    const [startPosition, setStartPosition] = useState({ x: 0, y: 0 });
+    const [startPosition, setStartPosition] = useState({ x: 600, y: 300 });
     const [offset, setOffset] = useState({ x: 0, y: 0 });
     const [hoveredImage, setHoveredImage] = useState(null);
 
@@ -16,7 +16,8 @@ const LandingComponent = ({ images = [] }) => {
     const [isWrapping, setIsWrapping] = useState(false);
     const navigate = useNavigate();
 
-
+    const [currCenter, setCurrCenter] = useState([])
+    const [lastCenteredXY, setLastCenteredXY] = useState({ x: 0, y: 0 })
 
     const possibleUrls = [
         '/Los Angeles',
@@ -26,6 +27,19 @@ const LandingComponent = ({ images = [] }) => {
         '/Providence',
         '/Chicago'
     ];
+
+    const findCenterIm = () => {
+        let centeredIm = document.elementsFromPoint(window.innerWidth / 2, window.innerHeight / 2)
+        // centeredIm.forEach(div => { div.tagName === 'IMG' ? setCurrCenter(div) : null })
+        // setCurrCenter(centeredIm)
+        centeredIm.forEach(div => div.className.includes('imgDiv') ? (
+            setCurrCenter(div.id),
+            console.log(div),
+            console.log(div.getBoundingClientRect()),
+            setLastCenteredXY({ x: div.getBoundingClientRect().x, y: div.getBoundingClientRect().y })
+        )
+            : null)
+    }
 
     const handleRandomNavigation = useCallback((e) => {
         e.preventDefault();
@@ -71,7 +85,7 @@ const LandingComponent = ({ images = [] }) => {
     useEffect(() => {
         const container = containerRef.current;
         container.style.cursor = isDragging ? 'grabbing' : 'grab';
-
+        findCenterIm()
 
 
     }, [isDragging]);
@@ -86,9 +100,8 @@ const LandingComponent = ({ images = [] }) => {
     }, [velocity])
 
     useEffect(() => {
-
-        const hOffset = 100;
-        const wOffset = 100;
+        const hOffset = 0;
+        const wOffset = 0;
 
         let newOffset = { ...offset };
         let wrapping = false;
@@ -123,6 +136,7 @@ const LandingComponent = ({ images = [] }) => {
             <div className="absolute left-1/2 tansform -translate-x-1/2 w-full text-center top-5  z-[900]">
                 {/* <img src="./images/Logo.png" className="absolute top-5 left-20 w-[2em]" /> */}
                 <p className="text-[400%] inline-block"> Conversations With My Straight Boyfriends </p>
+                <p> {currCenter} </p>
                 {/* <p className="text-black text-sm inline-block ">Conversations With My Straight Boyfriends</p> */}
             </div>
             <Link to="#" onClick={handleRandomNavigation}>
@@ -151,7 +165,8 @@ const LandingComponent = ({ images = [] }) => {
                             onHoverStart={e => { }}
                             onHoverEnd={e => { }}
                             key={index}
-                            className="absolute"
+                            className="absolute imgDiv"
+                            id={'img' + index}
                             style={{
                                 left: img.x,
                                 top: img.y,

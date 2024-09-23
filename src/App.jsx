@@ -7,6 +7,7 @@ import LandingComponent from './components/LandingComponent'
 import ContentComponent from './components/ContentComponent'
 import RootLayout from './components/layouts/RootLayout'
 import { Analytics } from "@vercel/analytics/react"
+import DragLayout from './components/layouts/DragLayout'
 
 export default function App() {
 
@@ -15,9 +16,9 @@ export default function App() {
       src: '/images/elephant.png',
       link: '/Pittsburgh',
       city: 'Pittsburgh',
-      x: -1200,
-      y: 200,
-      width: 300,
+      x: 0,
+      y: 0,
+      width: 10,
       height: 'auto',
       alt: 'Description of image 1',
       description: 'Pittsburgh PA',
@@ -27,9 +28,9 @@ export default function App() {
       src: '/images/pigeon2.png',
       link: '/New York',
       city: 'New York',
-      x: 200,
-      y: 300,
-      width: 300,
+      x: 0,
+      y: 80,
+      width: 10,
       height: 'auto',
       alt: 'Description of image 2',
       description: 'New York NY',
@@ -39,9 +40,9 @@ export default function App() {
       src: '/images/woopie.png',
       link: '/Los Angeles',
       city: 'Los Angeles',
-      x: 300,
-      y: 1300,
-      width: 300,
+      x: 30,
+      y: -80,
+      width: 10,
       height: 'auto',
       alt: 'Description of image 1',
       description: 'Los Angeles CA',
@@ -51,9 +52,9 @@ export default function App() {
       src: '/images/hammer.png',
       link: '/Chicago',
       city: 'Chicago',
-      x: 1800,
-      y: 300,
-      width: 300,
+      x: 30,
+      y: 0,
+      width: 10,
       height: 'auto',
       alt: 'Description of image 2',
       description: 'Chicago IL',
@@ -63,9 +64,9 @@ export default function App() {
       src: '/images/teacup.png',
       link: '/Sydney',
       city: 'Sydney',
-      x: -500,
-      y: -800,
-      width: 300,
+      x: -30,
+      y: 0,
+      width: 10,
       height: 'auto',
       alt: 'Description of image 1',
       description: 'Sydney',
@@ -75,9 +76,9 @@ export default function App() {
       src: '/images/grape.png',
       link: '/Providence',
       city: 'Providence',
-      x: -800,
-      y: 800,
-      width: 300,
+      x: -60,
+      y: 0,
+      width: 10,
       height: 'auto',
       alt: 'Description of image 2',
       description: 'Providence RD',
@@ -87,9 +88,9 @@ export default function App() {
       src: '/images/shirt.png',
       link: '/Suwanee',
       city: 'Suwanee',
-      x: 1000,
-      y: -550,
-      width: 300,
+      x: 60,
+      y: 0,
+      width: 10,
       height: 'auto',
       alt: 'Description of image 2',
       description: 'Suwanee GA',
@@ -99,9 +100,10 @@ export default function App() {
   ];
 
   const router = createBrowserRouter(
+
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
-        <Route index element={<LandingComponent images={images} />} />
+        <Route index element={<DragLayout images={images} />} />
         <Route path=":city" element={<ContentComponent images={images} />} />
       </Route>
     )
