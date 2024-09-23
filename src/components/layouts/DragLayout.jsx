@@ -2,12 +2,13 @@ import LandingScene from '../shaders/LandingScene';
 import React, { useState, useRef, useEffect, useReducer } from 'react'
 import { motion, useAnimate } from 'framer-motion'
 import { NavLink } from 'react-router-dom'
+import DanceButton from '../DanceButton';
 
-export default function DragLayout({ images }) {
+export default function DragLayout({ images = [] }) {
 
     const [pos, dispatch] = useReducer(reducer, { x: 0, y: 0, offX: 0, offY: 0, isDragging: false })
     const [scope, aniamte] = useAnimate()
-    const [currCenter, setCurrCenter] = useState({ currCenterX: 0, currCenterY: 0, currWidth: 0, currHeight: 0, id: null })
+    const [currCenter, setCurrCenter] = useState({ currCenterX: 0, currCenterY: 0, currWidth: 0, currHeight: 0, isRandoming: false, id: null })
 
     const oneViewWidth = window.innerWidth / 100
     const oneViewHeight = window.innerHeight / 100
@@ -53,6 +54,46 @@ export default function DragLayout({ images }) {
         })
     }
 
+    const handleRandomCentering = () => {
+        let currIndex = getNonRepeatingRandomIndex(images.length)
+        currIndex = currIndex()
+        console.log(currIndex)
+        dispatch({
+            type: 'RANDOM_CENTER',
+            currCenterX: images[currIndex].x,
+            currCenterY: images[currIndex].y,
+            currWidth: images[currIndex].width,
+            currHeight: images[currIndex].width,
+            vwConversion: oneViewWidth,
+            vhConversion: oneViewHeight,
+            windowMidX: window.innerWidth / 2,
+            windowMidY: window.innerHeight / 2,
+
+        })
+    }
+
+    function getNonRepeatingRandomIndex(arrayLength) {
+        // Initialize a Set to keep track of used indices
+        let usedIndices = new Set();
+
+        return function () {
+            // If all indices have been used, reset the Set
+            if (usedIndices.size === arrayLength) {
+                usedIndices.clear();
+            }
+
+            let randIndex;
+            do {
+                randIndex = Math.floor(Math.random() * arrayLength);
+            } while (usedIndices.has(randIndex));
+
+            // Add the index to the Set of used indices
+            usedIndices.add(randIndex);
+
+            return randIndex;
+        };
+    }
+
     function reducer(pos, action) {
         switch (action.type) {
 
@@ -66,7 +107,7 @@ export default function DragLayout({ images }) {
 
             case 'MOUSE_MOVE': {
                 if (pos.isDragging) {
-                    return { ...pos, x: action.x, y: action.y }
+                    return { ...pos, isRandoming: false, x: action.x, y: action.y }
                 }
                 else {
                     return pos
@@ -86,15 +127,28 @@ export default function DragLayout({ images }) {
                 }
             }
 
+            case 'RANDOM_CENTER': {
+                const targetX = action.currCenterX * action.vwConversion
+                const targetY = action.currCenterY * action.vhConversion
+                const width = action.currWidth * action.vwConversion
+                const height = action.currHeight * action.vwConversion
+                return {
+                    ...pos,
+                    isRandoming: true,
+                    x: action.windowMidX - targetX - width / 2,
+                    y: action.windowMidY - targetY - height / 2
+                }
+            }
+
             default:
                 return pos
         }
     }
 
-    const findCenterIm = () => {
+    const findCenterIm = (xPos, yPos) => {
         let cssArr;
         let leftTopArr;
-        let currCenteredDOM = document.elementsFromPoint(window.innerWidth / 2, window.innerHeight / 2)
+        let currCenteredDOM = document.elementsFromPoint(xPos, yPos)
 
         currCenteredDOM.forEach(div => div.className.includes('imgDiv') ? (
             console.log(Math.ceil(div.getBoundingClientRect().width)),
@@ -112,9 +166,13 @@ export default function DragLayout({ images }) {
         ) : null)
     }
 
+    useEffect(() => {
+        findCenterIm(0, 0)
+    }, [])
+
 
     useEffect(() => {
-        findCenterIm()
+        findCenterIm(window.innerWidth / 2, window.innerHeight / 2)
         aniamte(scope.current, {
             x: pos.x, y: pos.y,
             // yoyo: Infinity,
@@ -126,7 +184,7 @@ export default function DragLayout({ images }) {
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            if (!pos.isDragging) {
+            if (!pos.isDragging || !pos.isRandoming) {
                 handleCentering()
             }
         }, 2000);
@@ -149,6 +207,9 @@ export default function DragLayout({ images }) {
 
                 <p className="text-teal-900">offX: {pos.offX}</p>
                 <p className="text-teal-900">offY: {pos.offY}</p>
+            </div>
+            <div className="absolute left-1/2 tansform -translate-x-1/2 translate-y-[75vh] z-[900]" onClick={() => handleRandomCentering()}>
+                <DanceButton />
             </div>
 
 
@@ -191,67 +252,6 @@ export default function DragLayout({ images }) {
 
                         </motion.div>
                     ))}
-
-                    {/* 
-                    <div
-                        style={{
-                            left: '0vw',
-                            top: '0vh',
-                            width: '10vw',
-                            height: 'auto',
-                            position: 'absolute',
-                        }}
-                        id="im1"
-                        className="imgDiv"
-                    >
-                        <img src="/images/im1.jpg" />
-                    </div>
-
-
-                    <div
-                        style={{
-                            left: '40vw',
-                            top: '50vh',
-                            width: '20vw',
-                            height: 'auto',
-                            position: 'absolute',
-                        }}
-                        id="im2"
-                        className="imgDiv"
-                    >
-                        <img src="/images/im1.jpg" />
-                    </div>
-
-
-                    <div
-                        style={{
-                            left: '30vw',
-                            top: '100vh',
-                            width: '15vw',
-                            height: 'auto',
-                            position: 'absolute',
-                        }}
-                        id="im2"
-                        className="imgDiv"
-                    >
-                        <img src="/images/im1.jpg" />
-                    </div>
-
-
-                    <div
-                        style={{
-                            left: '-30vw',
-                            top: '-100vh',
-                            width: '10vw',
-                            height: 'auto',
-                            position: 'absolute',
-                        }}
-                        id="im2"
-                        className="imgDiv"
-                    >
-                        <img src="/images/im1.jpg" />
-                    </div> */}
-
 
                 </div>
             </div>
