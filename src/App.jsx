@@ -114,9 +114,11 @@ export default function App() {
   return (
     <>
 
-      <Routes location={location} key={location.pathname} element={<RootLayout />}>
-        <Route index element={<DragLayout images={images} />} />
-        <Route path=":city" element={<ContentComponent images={images} />} />
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<RootLayout />}>
+          <Route index element={<DragLayout images={images} />} />
+          <Route path=":city" element={<ContentComponent images={images} />} />
+        </Route>
       </Routes>
 
 
