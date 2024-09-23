@@ -194,7 +194,14 @@ export default function DragLayout({ images }) {
 
     return (
         <>
-            <div className="grid grid-cols-2 gap-x-10 text-2xl justify-start pl-[40vw] fixed top-0 left-0 z-10">
+            <div className="absolute left-1/2 tansform -translate-x-1/2 w-full text-center top-5  z-[900]">
+                {/* <img src="./images/Logo.png" className="absolute top-5 left-20 w-[2em]" /> */}
+                <p className="text-[400%] inline-block"> Conversations With My Straight Boyfriends </p>
+
+                {/* <p className="text-black text-sm inline-block ">Conversations With My Straight Boyfriends</p> */}
+            </div>
+            {/* debugging tool */}
+            {/* <div className="grid grid-cols-2 gap-x-10 text-2xl justify-start pl-[40vw] fixed top-0 left-0 z-10">
                 <p className="text-orange-500">pos.x: {pos.x / window.innerWidth * 100}</p>
                 <p className="text-orange-500">pos.y: {pos.y / window.innerHeight * 100}</p>
 
@@ -207,7 +214,7 @@ export default function DragLayout({ images }) {
 
                 <p className="text-teal-900">offX: {pos.offX}</p>
                 <p className="text-teal-900">offY: {pos.offY}</p>
-            </div>
+            </div> */}
             <div className="absolute left-1/2 tansform -translate-x-1/2 translate-y-[75vh] z-[900]" onClick={() => handleRandomCentering()}>
                 <DanceButton />
             </div>
