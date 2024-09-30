@@ -44,19 +44,21 @@ export default function ContentComponent({ images }) {
     }
 
     const imagesWithRelativePositions = calculateRelativePositions(images, pageImagesIndex);
-    console.log(imagesWithRelativePositions)
+    console.log(imagesWithRelativePositions, 'lol')
     const newImages = imagesWithRelativePositions.filter(im => im.city !== city)
-
+    const newImagesWithoutOverlap = newImages.filter(obj => Math.abs(obj.relativeX) > 80 || Math.abs(obj.relativeY) > 100)
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setOpacityVal((prevOpacity) => {
-                if (prevOpacity <= 0) {
-                    clearInterval(timer);
-                    return 0;
-                }
-                return Math.max(prevOpacity - 0.01, 0);
-            });
+            setTimeout(() => {
+                setOpacityVal((prevOpacity) => {
+                    if (prevOpacity <= 0) {
+                        clearInterval(timer);
+                        return 0;
+                    }
+                    return Math.max(prevOpacity - 0.01, 0);
+                });
+            }, 600);
         }, 30);
 
         return () => clearInterval(timer);
@@ -64,28 +66,31 @@ export default function ContentComponent({ images }) {
 
     return (
         <>
-            {opacityVal > 0 && <div className="absolute top-0 left-0">
-                {newImages.map((eachIm, index) => (
-                    <div
-                        style={{
-                            left: eachIm.relativeX * 4 + (10 * oneViewWidth),
-                            top: eachIm.relativeY * 2 + (50 * oneViewHeight),
-                            width: eachIm.width * oneViewWidth / 5,
-                            position: 'absolute',
-                            opacity: opacityVal
+            <div className="relative w-full h-screen overflow-hidden">
+                {/* <div className="relative w-full h-screen -z-[6]"> */}
+                {opacityVal > 0 && <div className="absolute top-1/2 left-1/2 tansform -translate-x-1/2">
+                    {newImagesWithoutOverlap.map((eachIm, index) => (
+                        <div
+                            style={{
+                                left: eachIm.relativeX * 2.7 + (oneViewWidth),
+                                top: eachIm.relativeY * 2.7 + (oneViewHeight),
+                                width: eachIm.width * oneViewWidth / 5,
+                                position: 'absolute',
+                                opacity: opacityVal
 
-                        }}
-                    >
-                        <NavLink
-                            to={eachIm.link}>
-                            <img src={eachIm.src} />
-                        </NavLink>
-                    </div>
-                ))}
-            </div>}
-            <div className="flex flex-col mx-10 text-white max-h-screen overflow-hidden">
-                <div className="flex flex-row justify-between">
-                    {/* <div className="w-[15em]">
+                            }}
+                        >
+                            <NavLink
+                                to={eachIm.link}>
+                                <img src={eachIm.src} />
+                            </NavLink>
+                        </div>
+                    ))}
+                </div>}
+                {/* </div> */}
+                <div className="flex flex-col mx-10 text-white max-h-screen overflow-hidden">
+                    <div className="flex flex-row justify-between">
+                        {/* <div className="w-[15em]">
 
                         <div className="flex flex-col my-auto items-start h-screen pl-5">
                             <div className="flex w-full justify-between mt-8 pl-20">
@@ -117,30 +122,31 @@ export default function ContentComponent({ images }) {
                         </div>
                     </div> */}
 
-                    <div className="flex flex-col mx-auto">
-                        <div className="flex mx-auto m-10">
-                            <p>{city}</p>
+                        <div className="flex flex-col mx-auto">
+                            <div className="flex mx-auto m-10">
+                                <p>{city}</p>
+                            </div>
+                            <div className="flex space-y-52 -my-10">
+                                <SnapScrollContainer>
+                                    <div >
+                                        <TextContent vidRef={vidList[0]} />
+                                    </div>
+                                    <div>
+                                        <TextContent vidRef={vidList[1]} />
+                                    </div>
+                                    <div>
+                                        <TextContent vidRef={vidList[2]} />
+                                    </div>
+                                </SnapScrollContainer>
+                            </div>
                         </div>
-                        <div className="flex space-y-52 -my-10">
-                            <SnapScrollContainer>
-                                <div >
-                                    <TextContent vidRef={vidList[0]} />
-                                </div>
-                                <div>
-                                    <TextContent vidRef={vidList[1]} />
-                                </div>
-                                <div>
-                                    <TextContent vidRef={vidList[2]} />
-                                </div>
-                            </SnapScrollContainer>
-                        </div>
+
                     </div>
+                </div >
 
+                <div className="absolute -z-10 top-0">
+                    <ContentScene />
                 </div>
-            </div >
-
-            <div className="absolute -z-10 top-0">
-                <ContentScene />
             </div>
 
         </>
