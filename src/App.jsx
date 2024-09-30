@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 // import { createBrowserRouter, RouterProvider, createRoutesFromElements, BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import './App.css'
-import LandingComponent from './components/LandingComponent'
+import LandingComponent from './components/Outadted-LandingComponent'
 import ContentComponent from './components/ContentComponent'
 import RootLayout from './components/layouts/RootLayout'
 import { Analytics } from "@vercel/analytics/react"

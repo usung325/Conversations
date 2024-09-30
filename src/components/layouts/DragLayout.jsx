@@ -3,8 +3,11 @@ import React, { useState, useRef, useEffect, useReducer } from 'react'
 import { motion, useAnimate } from 'framer-motion'
 import { NavLink } from 'react-router-dom'
 import DanceButton from '../DanceButton';
+import './DragLayout.css';
 
 export default function DragLayout({ images }) {
+
+    const [isHovering, setIsHovering] = useState(false);
 
     const [pos, dispatch] = useReducer(reducer, { x: 0, y: 0, offX: 0, offY: 0, isDragging: false })
     const [scope, aniamte] = useAnimate()
@@ -194,9 +197,28 @@ export default function DragLayout({ images }) {
 
     return (
         <>
-            <div className="absolute left-1/2 tansform -translate-x-1/2 w-full text-center top-5  z-[900]">
+            <div className="z-[900]">
                 {/* <img src="./images/Logo.png" className="absolute top-5 left-20 w-[2em]" /> */}
-                <p className="text-[400%] inline-block"> Conversations With My Straight Boyfriends </p>
+                <div className="sliderContainer">
+                    <div className="divider" />
+                    <NavLink to={`/`} className="logoIcon absolute top-2">
+                        <div
+                            className="z-[10000]"
+                            onMouseEnter={() => setIsHovering(true)}
+                            onMouseLeave={() => setIsHovering(false)}
+                        >
+                            <img
+                                src={isHovering ? "./images/dance2.gif" : "./images/LogoGif.png"}
+                                className=" w-[6em]"
+                                alt="Logo"
+                            />
+                        </div>
+                    </NavLink >
+                    <div className="slider">
+                        <h1 >Conversations With My Straight Boyfriends-</h1>
+                        <h1 >Conversations With My Straight Boyfriends-</h1>
+                    </div>
+                </div>
 
                 {/* <p className="text-black text-sm inline-block ">Conversations With My Straight Boyfriends</p> */}
             </div>

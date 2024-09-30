@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'PicNic';
+  src: url('/fonts/PicNic-Regular.woff2') format('woff2'),
+    url('/fonts/PicNic-Regular.woff') format('woff');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+
 *::-webkit-scrollbar {
   display: none;
 }
@@ -14,6 +23,11 @@
 }
 
 p {
+  font-size: 0.8em;
+}
+
+h1 {
+  font-family: 'PicNic';
   font-size: 0.8em;
 }
 
