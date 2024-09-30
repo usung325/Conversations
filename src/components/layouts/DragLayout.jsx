@@ -201,7 +201,7 @@ export default function DragLayout({ images }) {
                 {/* <img src="./images/Logo.png" className="absolute top-5 left-20 w-[2em]" /> */}
                 <div className="sliderContainer">
                     <div className="divider" />
-                    <NavLink to={`/`} className="logoIcon absolute top-2">
+                    <NavLink to={`/`} className="logoIcon absolute top-2 cursor-pointer">
                         <div
                             className="z-[10000]"
                             onMouseEnter={() => setIsHovering(true)}
@@ -242,13 +242,13 @@ export default function DragLayout({ images }) {
             </div>
 
 
-            <div className="w-full h-screen overflow-hidden relative "
+            <div className="w-full h-screen overflow-hidden relative cursor-grab active:cursor-grabbing"
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
             >
-                <div ref={scope}>
+                <div ref={scope} >
                     {images.map((img, i) => (
                         <motion.div
                             whileHover={{ scale: 1.5 }}

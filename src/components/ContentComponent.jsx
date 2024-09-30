@@ -11,7 +11,7 @@ import PageIndex from './PageIndex'
 export default function ContentComponent({ images }) {
     const { city } = useParams();
     const cityList = ['Pittsburgh', 'New York', 'Los Angeles', 'Chicago', 'Sydney', 'Providence', 'Suwanee']
-    const [opacityVal, setOpacityVal] = useState(1);
+    const [opacityVal, setOpacityVal] = useState(0.5);
     const vidList = images.find(e => e.city === city).vidList;
     console.log(vidList[0]);
 
@@ -58,15 +58,30 @@ export default function ContentComponent({ images }) {
                     }
                     return Math.max(prevOpacity - 0.01, 0);
                 });
-            }, 600);
+            }, 800);
         }, 30);
 
         return () => clearInterval(timer);
     }, []);
 
+    const [isHovering, setIsHovering] = useState(false);
+
     return (
         <>
             <div className="relative w-full h-screen overflow-hidden">
+                <NavLink to={`/`} className="logoIcon absolute top-2">
+                    <div
+                        className="z-[10000]"
+                        onMouseEnter={() => setIsHovering(true)}
+                        onMouseLeave={() => setIsHovering(false)}
+                    >
+                        <img
+                            src={isHovering ? "./images/danceWhite.gif" : "./images/LogoGifWhite.png"}
+                            className=" w-[6em]"
+                            alt="Logo"
+                        />
+                    </div>
+                </NavLink >
                 {/* <div className="relative w-full h-screen -z-[6]"> */}
                 {opacityVal > 0 && <div className="absolute top-1/2 left-1/2 tansform -translate-x-1/2">
                     {newImagesWithoutOverlap.map((eachIm, index) => (
@@ -124,7 +139,7 @@ export default function ContentComponent({ images }) {
 
                         <div className="flex flex-col mx-auto">
                             <div className="flex mx-auto m-10">
-                                <p>{city}</p>
+                                <h1 className="text-xl">{city}</h1>
                             </div>
                             <div className="flex space-y-52 -my-10">
                                 <SnapScrollContainer>

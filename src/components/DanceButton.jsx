@@ -7,7 +7,7 @@ export default function DanceButton() {
         <>
 
             <div
-                className="z-[10000]"
+                className="z-[10000] cursor-pointer"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
             >
