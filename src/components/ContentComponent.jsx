@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { motion } from "framer-motion"
+import { useAnimate, stagger, motion } from "framer-motion"
 import { useParams } from 'react-router-dom'
 import TextContent from './TextContent'
 import SnapScrollContainer from './containers/SnapscrollContainer'
@@ -11,7 +11,7 @@ import PageIndex from './PageIndex'
 export default function ContentComponent({ images }) {
     const { city } = useParams();
     const cityList = ['Pittsburgh', 'New York', 'Los Angeles', 'Chicago', 'Sydney', 'Providence', 'Suwanee']
-    const [opacityVal, setOpacityVal] = useState(0.5);
+    const [opacityVal, setOpacityVal] = useState(1);
     const vidList = images.find(e => e.city === city).vidList;
     console.log(vidList[0]);
 
@@ -66,6 +66,24 @@ export default function ContentComponent({ images }) {
 
     const [isHovering, setIsHovering] = useState(false);
 
+    ////////////////////////////////////////////////////////////////////////// 
+
+    const [scope, animate] = useAnimate()
+
+    useEffect(() => {
+        const staggerMenuItems = stagger(0.1, { startDelay: 0.5 });
+
+        animate("div",
+            { opacity: [0, 0.5], scale: [0, 1], rotate: [0, 360] },
+            {
+                duration: 0.5,
+                delay: staggerMenuItems,
+                type: "spring",
+                stiffness: 260,
+                damping: 20,
+            })
+    }, [])
+
     return (
         <>
             <div className="relative w-full h-screen overflow-hidden">
@@ -83,7 +101,7 @@ export default function ContentComponent({ images }) {
                     </div>
                 </NavLink >
                 {/* <div className="relative w-full h-screen -z-[6]"> */}
-                {opacityVal > 0 && <div className="absolute top-1/2 left-1/2 tansform -translate-x-1/2">
+                {opacityVal > 0 && <div ref={scope} className="absolute top-1/2 left-1/2 tansform -translate-x-1/2">
                     {newImagesWithoutOverlap.map((eachIm, index) => (
                         <div
                             style={{
