@@ -13,13 +13,11 @@ function debounce(func, wait) {
     };
 }
 
-export default function SnapScrollContainer({ children }) {
+export default function SnapScrollContainer({ children, isScrollRight }) {
     const containerRef = useRef(null);
     const [isScrolling, setIsScrolling] = useState(false);
     const [pageIndex, setPageIndex] = useState(0);
     const pageNav = [0, 1, 2];
-
-
 
     const handleScroll = useCallback(debounce(() => {
         if (!isScrolling) {
@@ -61,7 +59,16 @@ export default function SnapScrollContainer({ children }) {
     }, [handleScroll]);
 
     return (
-        <div className="flex flex-row justify-center items-center gap-2 w-4/5 mx-auto">
+        <div className="flex flex-row justify-center items-center content-center gap-2 mx-auto">
+            {!isScrollRight ?
+                (<div>
+                    <div className="flex flex-col gap-2">
+                        {pageNav.map((page, i) => (
+                            pageIndex === i ? <img src="/images/active.png" className="max-w-2" /> : <img src="/images/inactive.png" className="max-w-2" />
+                        ))}
+                    </div>
+                </div>) : null
+            }
 
             <div
                 ref={containerRef}
@@ -74,13 +81,20 @@ export default function SnapScrollContainer({ children }) {
                     </div>
                 ))}
             </div>
-            <div>
-                <div className="flex flex-col gap-2">
-                    {pageNav.map((page, i) => (
-                        pageIndex === i ? <img src="/images/active.png" className="max-w-2" /> : <img src="/images/inactive.png" className="max-w-2" />
-                    ))}
-                </div>
-            </div>
+
+
+
+
+            {isScrollRight ?
+                (<div className="">
+                    <div className="flex flex-col gap-2">
+                        {pageNav.map((page, i) => (
+                            pageIndex === i ? <img src="/images/active.png" className="max-w-2" /> : <img src="/images/inactive.png" className="max-w-2" />
+                        ))}
+                    </div>
+                </div>) : null
+            }
+
         </div>
     );
 }

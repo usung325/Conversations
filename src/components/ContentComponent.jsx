@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 import ContentModel from './shaders/ContentModel'
 import ContentScene from './shaders/ContentScene'
 import PageIndex from './PageIndex'
+import VideoContent from './VideoContent'
 
 export default function ContentComponent({ images }) {
     const { city } = useParams();
@@ -73,7 +74,7 @@ export default function ContentComponent({ images }) {
     useEffect(() => {
         const staggerMenuItems = stagger(0.1, { startDelay: 0.5 });
 
-        animate("div",
+        animate(".animateDiv",
             { opacity: [0, 0.5], scale: [0, 1], rotate: [0, 360] },
             {
                 duration: 0.5,
@@ -104,8 +105,10 @@ export default function ContentComponent({ images }) {
                 {opacityVal > 0 && <div ref={scope} className="absolute top-1/2 left-1/2 tansform -translate-x-1/2">
                     {newImagesWithoutOverlap.map((eachIm, index) => (
                         <div
+                            className="animateDiv"
+                            key={index}
                             style={{
-                                left: eachIm.relativeX * 2.7 + (oneViewWidth),
+                                left: eachIm.relativeX * 4 + (oneViewWidth),
                                 top: eachIm.relativeY * 2.7 + (oneViewHeight),
                                 width: eachIm.width * oneViewWidth / 5,
                                 position: 'absolute',
@@ -114,6 +117,7 @@ export default function ContentComponent({ images }) {
                             }}
                         >
                             <NavLink
+                                key={`nav-${index}`}
                                 to={eachIm.link}>
                                 <img src={eachIm.src} />
                             </NavLink>
@@ -160,17 +164,37 @@ export default function ContentComponent({ images }) {
                                 <h1 className="text-xl">{city}</h1>
                             </div>
                             <div className="flex space-y-52 -my-10">
-                                <SnapScrollContainer>
-                                    <div >
-                                        <TextContent vidRef={vidList[0]} />
+                                <div className="flex h-screen text-xs">
+                                    <div className="flex items-center justify-center gap-x-10 my-auto">
+                                        <div className="flex ">
+                                            <SnapScrollContainer isScrollRight={false}>
+                                                <div >
+                                                    <TextContent />
+                                                </div>
+                                                <div>
+                                                    <TextContent />
+                                                </div>
+                                                <div>
+                                                    <TextContent />
+                                                </div>
+                                            </SnapScrollContainer>
+                                        </div>
+                                        <div className="flex">
+                                            <SnapScrollContainer isScrollRight={true}>
+                                                <div>
+                                                    <VideoContent vidRef={vidList[0]} />
+                                                </div>
+                                                <div>
+                                                    <VideoContent vidRef={vidList[1]} />
+                                                </div>
+                                                <div>
+                                                    <VideoContent vidRef={vidList[2]} />
+                                                </div>
+
+                                            </SnapScrollContainer>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <TextContent vidRef={vidList[1]} />
-                                    </div>
-                                    <div>
-                                        <TextContent vidRef={vidList[2]} />
-                                    </div>
-                                </SnapScrollContainer>
+                                </div>
                             </div>
                         </div>
 
