@@ -57,7 +57,7 @@ export default function ContentComponent({ images }) {
                         clearInterval(timer);
                         return 0;
                     }
-                    return Math.max(prevOpacity - 0.01, 0);
+                    return Math.max(prevOpacity - 0.005, 0);
                 });
             }, 800);
         }, 30);
@@ -161,7 +161,9 @@ export default function ContentComponent({ images }) {
 
                         <div className="flex flex-col mx-auto">
                             <div className="flex mx-auto m-10">
-                                <h1 className="text-xl">{city}</h1>
+                                <h1
+                                    style={{ fontFamily: 'Typefesse_Pleine' }}
+                                    className="text-xl">{city}</h1>
                             </div>
                             <div className="flex space-y-52 -my-10">
                                 <div className="flex h-screen text-xs">

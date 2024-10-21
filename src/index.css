@@ -11,6 +11,24 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Typefesse_Claire-Obscure';
+  src: url('/fonts/Typefesse_Claire-Obscure.woff2') format('woff2'),
+    url('/fonts/Typefesse_Claire-Obscure.woff') format('woff');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Typefesse_Pleine';
+  src: url('/fonts/Typefesse_Pleine.woff2') format('woff2'),
+    url('/fonts/Typefesse_Pleine.woff') format('woff');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+
 *::-webkit-scrollbar {
   display: none;
 }
@@ -27,7 +45,7 @@ p {
 }
 
 h1 {
-  font-family: 'PicNic';
+  font-family: 'Typefesse_Claire-Obscure';
   font-size: 0.8em;
 }
 

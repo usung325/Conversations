@@ -14,7 +14,7 @@ export default function App() {
 
   const images = [
     {
-      src: '/images/elephant.png',
+      src: '/images/MLP.png',
       link: '/Pittsburgh',
       city: 'Pittsburgh',
       x: -10,
@@ -26,7 +26,7 @@ export default function App() {
       vidList: ['vid1.mp4', 'vid1.mp4', 'vid2.mp4']
     },
     {
-      src: '/images/pigeon2.png',
+      src: '/images/shark.png',
       link: '/New York',
       city: 'New York',
       x: 40,
@@ -38,7 +38,7 @@ export default function App() {
       vidList: ['vid2.mp4', 'vid1.mp4', 'vid3.mp4']
     },
     {
-      src: '/images/woopie.png',
+      src: '/images/rhino.png',
       link: '/Los Angeles',
       city: 'Los Angeles',
       x: 60,
@@ -50,31 +50,31 @@ export default function App() {
       vidList: ['vid3.mp4', 'vid3.mp4', 'vid1.mp4']
     },
     {
-      src: '/images/hammer.png',
+      src: '/images/casper.png',
       link: '/Chicago',
       city: 'Chicago',
       x: 130,
       y: 0,
-      width: 20,
+      width: 10,
       height: 'auto',
       alt: 'Description of image 2',
       description: 'Chicago IL',
       vidList: ['vid3.mp4', 'vid3.mp4', 'vid3.mp4']
     },
     {
-      src: '/images/teacup.png',
+      src: '/images/butter.png',
       link: '/Sydney',
       city: 'Sydney',
       x: -120,
       y: 20,
-      width: 20,
+      width: 10,
       height: 'auto',
       alt: 'Description of image 1',
       description: 'Sydney',
       vidList: ['vid1.mp4', 'vid2.mp4', 'vid3.mp4']
     },
     {
-      src: '/images/grape.png',
+      src: '/images/violet.png',
       link: '/Providence',
       city: 'Providence',
       x: -130,
@@ -86,12 +86,12 @@ export default function App() {
       vidList: ['vid2.mp4', 'vid2.mp4', 'vid3.mp4']
     },
     {
-      src: '/images/shirt.png',
+      src: '/images/lily.png',
       link: '/Suwanee',
       city: 'Suwanee',
       x: -20,
       y: -140,
-      width: 15,
+      width: 20,
       height: 'auto',
       alt: 'Description of image 2',
       description: 'Suwanee GA',

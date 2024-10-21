@@ -59,12 +59,12 @@ export default function SnapScrollContainer({ children, isScrollRight }) {
     }, [handleScroll]);
 
     return (
-        <div className="flex flex-row justify-center items-center content-center gap-2 mx-auto">
+        <div className="flex flex-row justify-center items-center content-center gap-5 mx-auto">
             {!isScrollRight ?
                 (<div>
                     <div className="flex flex-col gap-2">
                         {pageNav.map((page, i) => (
-                            pageIndex === i ? <img src="/images/active.png" className="max-w-2" /> : <img src="/images/inactive.png" className="max-w-2" />
+                            pageIndex === i ? <img src="/images/active.png" className="max-w-1.5" /> : <img src="/images/inactive.png" className="max-w-1.5" />
                         ))}
                     </div>
                 </div>) : null
@@ -87,9 +87,9 @@ export default function SnapScrollContainer({ children, isScrollRight }) {
 
             {isScrollRight ?
                 (<div className="">
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 ">
                         {pageNav.map((page, i) => (
-                            pageIndex === i ? <img src="/images/active.png" className="max-w-2" /> : <img src="/images/inactive.png" className="max-w-2" />
+                            pageIndex === i ? <img src="/images/active.png" className="max-w-1.5" /> : <img src="/images/inactive.png" className="max-w-1.5" />
                         ))}
                     </div>
                 </div>) : null

@@ -21,8 +21,8 @@ export default function VideoContent({ vidRef }) {
     }, [vidRef]);
 
     return (
-        <div ref={containerRef} >
-            <div className="w-[100%] video-wrapper pt-[25vh]">
+        <div ref={containerRef} className="pointer-events-none" >
+            <div className="w-[100%] video-wrapper pt-[20vh]">
                 <video ref={videoRef} width="300" height="auto" autoPlay muted>
                     <source src={`/images/${vidRef}`} type="video/mp4" />
                     Your browser does not support the video tag.

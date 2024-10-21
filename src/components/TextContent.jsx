@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from 'react'
 export default function TextContent() {
 
     return (
-        <div className="h-full items-center justify-center flex pt-[25vh]">
+        <div className="h-full items-center justify-center flex pt-[20vh] pointer-events-none">
             <div className="flex-auto items-start ">
                 <div className="flex flex-col items-end gap-2 mb-5">
                     <p>by Anthony Alterio</p>

@@ -7,6 +7,9 @@ import './DragLayout.css';
 
 export default function DragLayout({ images }) {
 
+    const [initialState, setInitialState] = useState(false)
+    let usedIndices = new Set();
+
     const [isHovering, setIsHovering] = useState(false);
 
     const [pos, dispatch] = useReducer(reducer, { x: 0, y: 0, offX: 0, offY: 0, isDragging: false })
@@ -60,7 +63,7 @@ export default function DragLayout({ images }) {
     const handleRandomCentering = () => {
         let currIndex = getNonRepeatingRandomIndex(images.length)
         currIndex = currIndex()
-        console.log(currIndex)
+        console.log(currIndex, 'this is curr index')
         dispatch({
             type: 'RANDOM_CENTER',
             currCenterX: images[currIndex].x,
@@ -77,7 +80,7 @@ export default function DragLayout({ images }) {
 
     function getNonRepeatingRandomIndex(arrayLength) {
         // Initialize a Set to keep track of used indices
-        let usedIndices = new Set();
+
 
         return function () {
             // If all indices have been used, reset the Set
@@ -164,13 +167,18 @@ export default function DragLayout({ images }) {
                 currCenterX: parseFloat(leftTopArr[0].slice(6, leftTopArr[0].length - 2)),
                 currCenterY: parseFloat(leftTopArr[1].slice(6, leftTopArr[1].length - 2)),
                 currWidth: +Math.ceil(div.getBoundingClientRect().width),
-                currHeight: +Math.ceil(div.getBoundingClientRect().height)
+                currHeight: +Math.ceil(div.getBoundingClientRect().height),
             })
         ) : null)
     }
 
     useEffect(() => {
         findCenterIm(0, 0)
+        const intervalId = setTimeout(() => {
+            handleRandomCentering()
+            setInitialState(true)
+        }, 2000)
+        return () => clearInterval(intervalId);
     }, [])
 
 
@@ -187,8 +195,9 @@ export default function DragLayout({ images }) {
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            if (!pos.isDragging && !pos.isRandoming) {
+            if (initialState && !pos.isDragging && !pos.isRandoming) {
                 handleCentering()
+                console.log('working')
             }
         }, 2000);
 
