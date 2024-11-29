@@ -5,7 +5,7 @@ import TextContent from "./TextContent";
 import SnapScrollContainer from "./containers/SnapscrollContainer";
 import { NavLink } from "react-router-dom";
 import ContentModel from "./shaders/ContentModel";
-import ContentScene from "./shaders/ContentScene";
+import Bg0 from "./shaders/ContentScene";
 import PageIndex from "./PageIndex";
 import VideoContent from "./VideoContent";
 import Bg1 from "./shaders/Bg1.jsx";
@@ -17,13 +17,13 @@ import Bg3 from "./shaders/Bg3.jsx";
 export default function ContentComponent({ images }) {
   const { city } = useParams();
   const cityList = [
-    "Pittsburgh",
-    "New York",
-    "Los Angeles",
-    "Chicago",
-    "Sydney",
-    "Providence",
-    "Suwanee",
+    { itemCity: "Pittsburgh", bg: Bg1 },
+    { itemCity: "New York", bg: Bg2 },
+    { itemCity: "Los Angeles", bg: Bg3 },
+    { itemCity: "Chicago", bg: Bg0 },
+    { itemCity: "Sydney", bg: Bg3 },
+    { itemCity: "Providence", bg: Bg2 },
+    { itemCity: "Suwanee", bg: Bg1 },
   ];
   const [opacityVal, setOpacityVal] = useState(1);
   const vidList = images.find((e) => e.city === city).vidList;
@@ -233,10 +233,9 @@ export default function ContentComponent({ images }) {
         </div>
 
         <div className="absolute -z-10 top-0">
-          {/* <ContentScene /> */}
-          {/* <Bg1 /> */}
-          {/* <Bg2 /> */}
-          <Bg3 />
+          {cityList.map(({ itemCity, bg: Bg }, index) =>
+            itemCity == city ? <Bg /> : null
+          )}
         </div>
       </div>
     </>
