@@ -9,6 +9,7 @@ import ContentScene from "./shaders/ContentScene";
 import PageIndex from "./PageIndex";
 import VideoContent from "./VideoContent";
 import Bg1 from "./shaders/Bg1.jsx";
+import Bg2 from "./shaders/Bg2.jsx";
 
 //this is the dynamic content page
 
@@ -232,7 +233,8 @@ export default function ContentComponent({ images }) {
 
         <div className="absolute -z-10 top-0">
           {/* <ContentScene /> */}
-          <Bg1 />
+          {/* <Bg1 /> */}
+          <Bg2 />
         </div>
       </div>
     </>
