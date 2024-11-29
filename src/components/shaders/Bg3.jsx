@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useAspect } from "@react-three/drei";
-import fragment from "./page1/fragment.glsl";
-import vertex from "./page1/vertex.glsl";
+import fragment from "./page3/fragment.glsl";
+import vertex from "./page3/vertex.glsl";
 import * as THREE from "three";
 
-export default function Bg1() {
+export default function Bg3() {
   return (
     <div className="w-screen h-screen">
       <Canvas
