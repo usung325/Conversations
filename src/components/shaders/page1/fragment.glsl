@@ -2,6 +2,23 @@ precision mediump float;
 
     uniform float iTime;
     uniform vec2 iResolution;
+
+    uniform vec3 uColor1;
+    uniform vec3 uColor2;
+    uniform vec3 uColor3;
+    uniform vec3 uColor4;
+    uniform vec3 uColor5;
+    uniform vec3 uColor6;
+
+    uniform float uFrequency;
+    uniform float uAmplitude;
+    uniform float uSpeed;
+    uniform float uMixLayer1A;
+    uniform float uMixLayer1B;
+    uniform float uMixLayer2A;
+    uniform float uMixLayer2B;
+    uniform float uSinMultiplier;
+
     varying vec2 vUv;
 
     #define S(a,b,t) smoothstep(a,b,t)
@@ -21,7 +38,7 @@ precision mediump float;
         vec2 i = floor(p);
         vec2 f = fract(p);
         
-        vec2 u = f*f*(3.0-2.0*f);
+        vec2 u = f*f*(3.0-2.0*f) ;
         float n = mix(mix(dot(-1.0+2.0*hash(i + vec2(0.0,0.0)), f - vec2(0.0,0.0)), 
                           dot(-1.0+2.0*hash(i + vec2(1.0,0.0)), f - vec2(1.0,0.0)), u.x),
                       mix(dot(-1.0+2.0*hash(i + vec2(0.0,1.0)), f - vec2(0.0,1.0)), 
@@ -41,19 +58,19 @@ precision mediump float;
         tuv *= Rot(radians((degree-.5)*720.+180.));
         tuv.y *= ratio;
         
-        float frequency = 5.;
-        float amplitude = 30.;
-        float speed = iTime * 2.;
+        float frequency = uFrequency;
+        float amplitude = uAmplitude;
+        float speed = iTime * uSpeed;
         tuv.x += sin(tuv.y*frequency+speed)/amplitude;
         tuv.y += sin(tuv.x*frequency*1.5+speed)/(amplitude*.5);
         
         // Updated color definitions (converted from hex to RGB, normalized to 0-1)
-        vec3 color1 = vec3(0.01, 0.03, 0.11);  // EDE3F7
-        vec3 color2 = vec3(0.33, 0.55, 0.78);  // B9CC7C
-        vec3 color3 = vec3(0.82, 0.89, 0.95);  // C77869
-        vec3 color4 = vec3(0.04, 0.25, 0.58);  // C47AAB
-        vec3 color5 = vec3(0.89, 0.15, 0.08);  // A0D1EA
-        vec3 color6 = vec3(0.82, 0.545, 0.874);  // 9596A1 skyblue
+        vec3 color1 = uColor1;
+        vec3 color2 = uColor2;
+        vec3 color3 = uColor3;
+        vec3 color4 = uColor4;
+        vec3 color5 = uColor5;
+        vec3 color6 = uColor6;
         
         // Create three layers using pairs of colors
         vec3 layer1 = mix(color1, color2, S(-.3, .2, (tuv*Rot(radians(-5.))).x));
@@ -61,8 +78,8 @@ precision mediump float;
         vec3 layer3 = mix(color5, color6, S(-.3, .2, (tuv*Rot(radians(0.))).x));
         
         // Mix the layers
-        vec3 finalComp = mix(layer1, layer2, S(.5, -.3, tuv.x+iTime));
-        finalComp = mix(finalComp, layer3, S(-.2, .4, sin(tuv.y*3.+iTime)));
+        vec3 finalComp = mix(layer1, layer2, S(uMixLayer1A, uMixLayer1B, tuv.x+iTime));
+        finalComp = mix(finalComp, layer3, S(uMixLayer2A, uMixLayer2B, sin(tuv.y*uSinMultiplier+iTime)));
         
         vec3 col = finalComp;
         
