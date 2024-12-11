@@ -57,38 +57,6 @@ export function Wrapped() {
       step: 0.1,
     },
     sinMultiplier: { value: 3.0, min: 0.1, max: 30.0, step: 0.1 },
-    "Copy values to clipboard": button(() => {
-      const values = {
-        frequency: controls.frequency,
-        amplitude: controls.amplitude,
-        speed: controls.speed,
-        timeMultiplier: controls.timeMultiplier,
-        "mixLayer1.a": controls.mixLayer1.a,
-        "mixLayer1.b": controls.mixLayer1.b,
-        "mixLayer2.a": controls.mixLayer2.a,
-        "mixLayer2.b": controls.mixLayer2.b,
-        sinMultiplier: controls.sinMultiplier,
-        color1: controls.color1,
-        color2: controls.color2,
-        color3: controls.color3,
-        color4: controls.color4,
-        color5: controls.color5,
-        color6: controls.color6,
-      };
-
-      const formattedText = Object.entries(values)
-        .map(([key, value]) => `${key}: ${value}`)
-        .join("\n");
-
-      navigator.clipboard
-        .writeText(formattedText)
-        .then(() => {
-          console.log("Values copied to clipboard!");
-        })
-        .catch((err) => {
-          console.error("Failed to copy values:", err);
-        });
-    }),
   });
 
   const uniforms = useRef({
