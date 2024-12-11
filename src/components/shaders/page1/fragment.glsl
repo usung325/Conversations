@@ -18,6 +18,7 @@ precision mediump float;
     uniform float uMixLayer2A;
     uniform float uMixLayer2B;
     uniform float uSinMultiplier;
+    uniform float uTimeMultiplier;
 
     varying vec2 vUv;
 
@@ -79,7 +80,7 @@ precision mediump float;
         
         // Mix the layers
         vec3 finalComp = mix(layer1, layer2, S(uMixLayer1A, uMixLayer1B, tuv.x+iTime));
-        finalComp = mix(finalComp, layer3, S(uMixLayer2A, uMixLayer2B, sin(tuv.y*uSinMultiplier+iTime)));
+        finalComp = mix(finalComp, layer3, S(uMixLayer2A, uMixLayer2B, sin(tuv.y*uSinMultiplier+iTime*uTimeMultiplier)));
         
         vec3 col = finalComp;
         

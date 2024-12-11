@@ -4,7 +4,7 @@ import { useAspect } from "@react-three/drei";
 import fragment from "./page1/fragment.glsl";
 import vertex from "./page1/vertex.glsl";
 import * as THREE from "three";
-import { useControls, Leva } from "leva";
+import { useControls, button, Leva } from "leva";
 
 export default function Bg1() {
   return (
@@ -35,8 +35,15 @@ export function Wrapped() {
     //
 
     frequency: { value: 5.0, min: 0.1, max: 30.0, step: 0.1 },
-    amplitude: { value: 30.0, min: 0.1, max: 50.0, step: 0.1 },
+    amplitude: { value: 30.0, min: 0.1, max: 100.0, step: 0.1 },
     speed: { value: 2.0, min: 0.01, max: 5.0, step: 0.01 },
+    timeMultiplier: {
+      value: 1.0,
+      min: 0.001,
+      max: 1.0,
+      step: 0.01,
+      label: "speed-lower",
+    },
     mixLayer1: {
       value: { a: 0.5, b: -0.3 },
       min: -0.9,
@@ -50,6 +57,38 @@ export function Wrapped() {
       step: 0.1,
     },
     sinMultiplier: { value: 3.0, min: 0.1, max: 30.0, step: 0.1 },
+    "Copy values to clipboard": button(() => {
+      const values = {
+        frequency: controls.frequency,
+        amplitude: controls.amplitude,
+        speed: controls.speed,
+        timeMultiplier: controls.timeMultiplier,
+        "mixLayer1.a": controls.mixLayer1.a,
+        "mixLayer1.b": controls.mixLayer1.b,
+        "mixLayer2.a": controls.mixLayer2.a,
+        "mixLayer2.b": controls.mixLayer2.b,
+        sinMultiplier: controls.sinMultiplier,
+        color1: controls.color1,
+        color2: controls.color2,
+        color3: controls.color3,
+        color4: controls.color4,
+        color5: controls.color5,
+        color6: controls.color6,
+      };
+
+      const formattedText = Object.entries(values)
+        .map(([key, value]) => `${key}: ${value}`)
+        .join("\n");
+
+      navigator.clipboard
+        .writeText(formattedText)
+        .then(() => {
+          console.log("Values copied to clipboard!");
+        })
+        .catch((err) => {
+          console.error("Failed to copy values:", err);
+        });
+    }),
   });
 
   const uniforms = useRef({
@@ -77,6 +116,7 @@ export function Wrapped() {
     uMixLayer2A: { value: controls.mixLayer2.a },
     uMixLayer2B: { value: controls.mixLayer2.b },
     uSinMultiplier: { value: controls.sinMultiplier },
+    uTimeMultiplier: { value: controls.timeMultiplier },
   });
   const meshRef = useRef(null);
 
@@ -101,6 +141,8 @@ export function Wrapped() {
     meshRef.current.material.uniforms.uMixLayer2B.value = controls.mixLayer2.b;
     meshRef.current.material.uniforms.uSinMultiplier.value =
       controls.sinMultiplier;
+    meshRef.current.material.uniforms.uTimeMultiplier.value =
+      controls.timeMultiplier;
   });
 
   return (
