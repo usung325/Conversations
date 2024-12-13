@@ -1,20 +1,48 @@
-import React, { useRef, useEffect } from 'react'
+// export default function TextContent({author, body, choreo, performer}) {
+//     return (
+//         <div className="h-full items-center justify-center flex pt-[20vh] pointer-events-none">
+//             <div className="flex-auto items-start">
+//                 <div className="flex flex-col items-start gap-2 mb-5">
+//                     <p>by {author}</p>
+//                     {/* <pre className="w-fit font-sans text-[.8em]"> 
+//                         {body}
+//                     </pre> */}
+//                     {/* <p className="w-[25em]"> 
+//                         {body}
+//                     </p> */}
+//                         {body.split('\n').map((line, i) => (
+//                             <p key={i} className="w-[25em]">{line}</p>
+//                         ))}
+//                 </div>
 
-export default function TextContent() {
-
+//                 <div className="flex flex-col gap-3">
+//                     <p>choreo: {choreo}</p>
+//                     <p>performance: {performer}</p>
+//                 </div>
+//             </div>
+//         </div>
+//     )
+// }
+export default function TextContent({author, body, choreo, performer}) {
     return (
-        <div className="h-full items-center justify-center flex pt-[20vh] pointer-events-none">
-            <div className="flex-auto items-start ">
-                <div className="flex flex-col items-end gap-2 mb-5">
-                    <p>by Anthony Alterio</p>
-                    <p className="w-[25em]">
-                        Ut dignissim nibh id ante porttitor, et mollis nibh sollicitudin. Integer in neque nec enim iaculis pellentesque. Fusce condimentum, arcu in semper tincidunt, purus sapien commodo dui, id suscipit mi metus a ex. Nunc lectus arcu, viverra non lobortis sed, vehicula quis massa. In tincidunt, tortor vitae porta consequat, augue dolor scelerisque sem, vel rhoncus nisl neque sit amet lorem. Vestibulum tempor est quis blandit eleifend. Fusce nisl metus, sodales in sagittis quis, lacinia in turpis. Aliquam mollis tortor et felis malesuada efficitur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed aliquam tellus metus, vitae ultricies quam cursus in. Integer sit amet magna mi. Suspendisse elementum ultrices est, id feugiat erat luctus et. Vestibulum dictum, ipsum quis commodo fermentum, felis dolor varius est, sed consectetur ex est et leo. Integer neque mauris, volutpat vel diam a, finibus luctus metus. Curabitur non elementum elit, id volutpat justo. Integer interdum venenatis mattis.
-                    </p>
+        // Remove the pt-[20vh] and use flex with min-h-screen
+        <div className="h-[calc(100vh-5rem)] flex items-center justify-center pointer-events-none">
+            {/* Container for the actual content */}
+            <div className="flex flex-col justify-between">
+                {/* Top section with author and body */}
+                <div className="flex flex-col items-start gap-2 mb-5">
+                    <p className="ml-auto">by {author}</p>
+                    <div className="flex flex-col">
+                        {body.split('\n').map((line, i) => (
+                            <p key={i} className="w-[25em] mt-2">{line}</p>
+                        ))}
+                    </div>
                 </div>
 
-                <div className="flex flex-col gap-3">
-                    <p>choreo: male identifying heterosexual body</p>
-                    <p>performance: my lgbtqia+ body</p>
+                {/* Bottom section with choreo and performer */}
+                <div className="flex flex-col gap-3 ">
+                    <p>choreo: {choreo}</p>
+                    <p>performance: {performer}</p>
                 </div>
             </div>
         </div>

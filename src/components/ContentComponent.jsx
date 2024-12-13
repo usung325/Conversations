@@ -11,6 +11,7 @@ import VideoContent from "./VideoContent";
 import Bg1 from "./shaders/Bg1.jsx";
 import Bg2 from "./shaders/Bg2.jsx";
 import Bg3 from "./shaders/Bg3.jsx";
+import { cityContent } from './textContentData';
 
 //this is the dynamic content page
 
@@ -25,6 +26,8 @@ export default function ContentComponent({ images }) {
     { itemCity: "Providence", bg: Bg2 },
     { itemCity: "Suwanee", bg: Bg1 },
   ];
+  const currentCityContent = cityContent[city]['performances'];
+  console.log(currentCityContent[0])
   const [opacityVal, setOpacityVal] = useState(1);
   const vidList = images.find((e) => e.city === city).vidList;
   console.log(vidList[0]);
@@ -201,28 +204,20 @@ export default function ContentComponent({ images }) {
                   <div className="flex items-center justify-center gap-x-10 my-auto">
                     <div className="flex ">
                       <SnapScrollContainer isScrollRight={false}>
-                        <div>
-                          <TextContent />
-                        </div>
-                        <div>
-                          <TextContent />
-                        </div>
-                        <div>
-                          <TextContent />
-                        </div>
+                        {currentCityContent.map((item) => (
+                          <div>
+                            <TextContent author={item['author']} performer={item['performer']} choreo={item['choreo']} body={item['body']}/>
+                          </div>
+                        ))}
                       </SnapScrollContainer>
                     </div>
                     <div className="flex">
                       <SnapScrollContainer isScrollRight={true}>
+                      {currentCityContent.map((_, i) => (
                         <div>
-                          <VideoContent vidRef={vidList[0]} />
+                          <VideoContent vidRef={vidList[i]} />
                         </div>
-                        <div>
-                          <VideoContent vidRef={vidList[1]} />
-                        </div>
-                        <div>
-                          <VideoContent vidRef={vidList[2]} />
-                        </div>
+                        ))}
                       </SnapScrollContainer>
                     </div>
                   </div>
