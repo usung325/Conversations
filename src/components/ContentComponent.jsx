@@ -11,7 +11,7 @@ import VideoContent from "./VideoContent";
 import Bg1 from "./shaders/Bg1.jsx";
 import Bg2 from "./shaders/Bg2.jsx";
 import Bg3 from "./shaders/Bg3.jsx";
-import { cityContent } from './textContentData';
+import { cityContent } from "./textContentData";
 
 //this is the dynamic content page
 
@@ -26,8 +26,8 @@ export default function ContentComponent({ images }) {
     { itemCity: "Providence", bg: Bg2 },
     { itemCity: "Suwanee", bg: Bg1 },
   ];
-  const currentCityContent = cityContent[city]['performances'];
-  console.log(currentCityContent[0])
+  const currentCityContent = cityContent[city]["performances"];
+  console.log(currentCityContent[0]);
   const [opacityVal, setOpacityVal] = useState(1);
   const vidList = images.find((e) => e.city === city).vidList;
   console.log(vidList[0]);
@@ -191,32 +191,37 @@ export default function ContentComponent({ images }) {
                     </div> */}
 
             <div className="flex flex-col mx-auto">
-              <div className="flex mx-auto m-10">
-                <h1
-                  style={{ fontFamily: "Typefesse_Pleine" }}
+              <div className="flex mx-auto mt-10">
+                <p
+                  // style={{ fontFamily: "Typefesse_Pleine" }}
                   className="text-xl"
                 >
                   {city}
-                </h1>
+                </p>
               </div>
-              <div className="flex space-y-52 -my-10">
-                <div className="flex h-screen text-xs">
-                  <div className="flex items-center justify-center gap-x-10 my-auto">
+              <div className="flex space-y-52 -my-15 overflow-hidden">
+                <div className="flex h-screen">
+                  <div className="flex items-center justify-center gap-x-16 my-auto">
                     <div className="flex ">
                       <SnapScrollContainer isScrollRight={false}>
                         {currentCityContent.map((item) => (
                           <div>
-                            <TextContent author={item['author']} performer={item['performer']} choreo={item['choreo']} body={item['body']}/>
+                            <TextContent
+                              author={item["author"]}
+                              performer={item["performer"]}
+                              choreo={item["choreo"]}
+                              body={item["body"]}
+                            />
                           </div>
                         ))}
                       </SnapScrollContainer>
                     </div>
                     <div className="flex">
                       <SnapScrollContainer isScrollRight={true}>
-                      {currentCityContent.map((_, i) => (
-                        <div>
-                          <VideoContent vidRef={vidList[i]} />
-                        </div>
+                        {currentCityContent.map((_, i) => (
+                          <div>
+                            <VideoContent vidRef={vidList[i]} />
+                          </div>
                         ))}
                       </SnapScrollContainer>
                     </div>

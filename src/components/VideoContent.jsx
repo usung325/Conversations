@@ -40,9 +40,9 @@ export default function VideoContent({ vidRef }) {
   return (
     <div
       ref={containerRef}
-      className="pointer-events-none flex flex-col items-end"
+      className="h-[calc(100vh)] flex items-center justify-center pointer-events-none "
     >
-      <div className="w-[100%] video-wrapper pt-[20vh]">
+      <div className="w-[100%] video-wrapper">
         <video
           loop
           onPlay={() => setIsPlaying(true)}
