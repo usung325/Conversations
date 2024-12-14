@@ -5,15 +5,16 @@ import TextContent from "./TextContent";
 import SnapScrollContainer from "./containers/SnapscrollContainer";
 import { NavLink } from "react-router-dom";
 import ContentModel from "./shaders/ContentModel";
-import Bg0 from "./shaders/ContentScene";
 import PageIndex from "./PageIndex";
 import VideoContent from "./VideoContent";
+import Bg0 from "./shaders/ContentScene";
 import Bg1 from "./shaders/Bg1.jsx";
 import Bg2 from "./shaders/Bg2.jsx";
 import Bg3 from "./shaders/Bg3.jsx";
 import Bg4 from "./shaders/Bg4.jsx";
 import Bg5 from "./shaders/Bg5.jsx";
 import Bg6 from "./shaders/Bg6.jsx";
+import Bg7 from "./shaders/Bg7.jsx";
 import { cityContent } from "./textContentData";
 
 //this is the dynamic content page
@@ -24,7 +25,7 @@ export default function ContentComponent({ images }) {
     { itemCity: "Pittsburgh", bg: Bg1 },
     { itemCity: "New York", bg: Bg2 },
     { itemCity: "Los Angeles", bg: Bg3 },
-    { itemCity: "Chicago", bg: Bg0 },
+    { itemCity: "Chicago", bg: Bg7 },
     { itemCity: "Sydney", bg: Bg4 },
     { itemCity: "Providence", bg: Bg5 },
     { itemCity: "Suwanee", bg: Bg6 },
