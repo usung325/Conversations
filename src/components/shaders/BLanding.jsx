@@ -144,13 +144,16 @@ export default function BLanding({ instanceId = "landing" }) {
   });
 
   return (
-    <mesh ref={meshRef} scale={scale}>
-      <planeGeometry args={[1, 1, 64, 64]} />
-      <shaderMaterial
-        fragmentShader={fragment}
-        vertexShader={vertex}
-        uniforms={uniforms.current}
-      />
-    </mesh>
+    <>
+      <Leva hidden={true} />
+      <mesh ref={meshRef} scale={scale}>
+        <planeGeometry args={[1, 1, 64, 64]} />
+        <shaderMaterial
+          fragmentShader={fragment}
+          vertexShader={vertex}
+          uniforms={uniforms.current}
+        />
+      </mesh>
+    </>
   );
 }
