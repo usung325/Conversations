@@ -45,12 +45,12 @@ export function Wrapped({ instanceId }) {
   ] = useControls(
     instanceId,
     () => ({
-      color1: "#f56c0c", // dark blue
-      color2: "#d519e0", // light blue
-      color3: "#1ef05a", // very light blue
-      color4: "#891887", // medium blue
-      color5: "#56b973", // red
-      color6: "#b91676", // purple
+      color1: "#2f2dba", // dark blue
+      color2: "#afdcf0", // light blue
+      color3: "#60c645", // very light blue
+      color4: "#ed6935", // medium blue
+      color5: "#155055", // red
+      color6: "#4138f7", // purple
 
       // Add randomize button
       randomize: button(() => {
