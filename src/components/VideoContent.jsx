@@ -40,14 +40,14 @@ export default function VideoContent({ vidRef }) {
   return (
     <div
       ref={containerRef}
-      className="h-[calc(100vh)] flex items-center justify-center pointer-events-none "
+      className="h-[calc(100vh)] flex items-center justify-center pointer-events-none"
     >
       <div className="w-[100%] video-wrapper">
         <video
           loop
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
-          onClick={togglePlayPause}
+          // onClick={togglePlayPause}
           ref={videoRef}
           width="300"
           height="auto"

@@ -114,6 +114,12 @@ export default function ContentComponent({ images }) {
     );
   }, []);
 
+  const [vidVisible, setVidVisible] = useState(true);
+
+  const handleClick = () => {
+    setVidVisible(!vidVisible);
+  };
+
   return (
     <>
       <div className="relative w-full h-screen overflow-hidden">
@@ -205,34 +211,77 @@ export default function ContentComponent({ images }) {
               </div>
               <div className="flex space-y-52 -my-15 overflow-hidden">
                 <div className="flex h-screen">
-                  <div className="grid grid-cols-[0px_40vw] md:flex md:flex-row items-center justify-center gap-x-16 md:gap-y-0 gap-y-8 my-auto w-full">
-                    {/* Text content container */}
-                    <div className="flex w-full">
-                      <SnapScrollContainer isScrollRight={false}>
-                        {currentCityContent.map((item) => (
-                          <div>
-                            <TextContent
-                              author={item["author"]}
-                              performer={item["performer"]}
-                              choreo={item["choreo"]}
-                              body={item["body"]}
-                            />
-                          </div>
-                        ))}
-                      </SnapScrollContainer>
-                    </div>
+                  {console.log(window.innerWidth)}
+                  {window.innerWidth > 600 ? (
+                    <div className="flex flex-row items-center justify-center gap-x-20 gap-y-8 my-auto w-full">
+                      {/* Text content container */}
+                      <div className="flex w-full">
+                        <SnapScrollContainer isScrollRight={false}>
+                          {currentCityContent.map((item) => (
+                            <div>
+                              <TextContent
+                                author={item["author"]}
+                                performer={item["performer"]}
+                                choreo={item["choreo"]}
+                                body={item["body"]}
+                              />
+                            </div>
+                          ))}
+                        </SnapScrollContainer>
+                      </div>
 
-                    {/* Video content container */}
-                    <div className="flex w-full">
-                      <SnapScrollContainer isScrollRight={true}>
-                        {currentCityContent.map((_, i) => (
-                          <div>
-                            <VideoContent vidRef={vidList[i]} />
-                          </div>
-                        ))}
-                      </SnapScrollContainer>
+                      {/* Video content container */}
+                      <div className="flex w-full">
+                        <SnapScrollContainer isScrollRight={true}>
+                          {currentCityContent.map((_, i) => (
+                            <div>
+                              <VideoContent vidRef={vidList[i]} />
+                            </div>
+                          ))}
+                        </SnapScrollContainer>
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    <div className="grid grid-cols-1 items-center justify-center gap-x-20 gap-y-8 my-auto w-full">
+                      {/* Text content container */}
+                      <div
+                        onClick={handleClick}
+                        className="flex w-full pointer-events-auto"
+                      >
+                        <div
+                          className={`fixed w-full left-1/2 top-3/5 -translate-x-1/2 -translate-y-1/2 ${
+                            vidVisible ? "z-10" : "z-8 opacity-50"
+                          }`}
+                        >
+                          <SnapScrollContainer isScrollRight={false}>
+                            {currentCityContent.map((_, i) => (
+                              <div>
+                                <VideoContent vidRef={vidList[i]} />
+                              </div>
+                            ))}
+                          </SnapScrollContainer>
+                        </div>
+                        <div
+                          className={`fixed left-1/2 top-3/5 -translate-x-1/2 -translate-y-1/2 z-9 ${
+                            vidVisible ? "opacity-20" : ""
+                          }`}
+                        >
+                          <SnapScrollContainer isScrollRight={false}>
+                            {currentCityContent.map((item) => (
+                              <div>
+                                <TextContent
+                                  author={item["author"]}
+                                  performer={item["performer"]}
+                                  choreo={item["choreo"]}
+                                  body={item["body"]}
+                                />
+                              </div>
+                            ))}
+                          </SnapScrollContainer>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
