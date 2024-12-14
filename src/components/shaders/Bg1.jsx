@@ -6,20 +6,25 @@ import vertex from "./page1/vertex.glsl";
 import * as THREE from "three";
 import { useControls, button, Leva } from "leva";
 
-export default function Bg1() {
+export default function Bg1({ instanceId = "background1" }) {
   return (
     <div className="w-screen h-screen">
       <Canvas
         className="w-full h-full"
         camera={{ fov: 50, position: [0, 0, 1.4] }}
       >
-        <Wrapped />
+        <Wrapped instanceId={instanceId} />
       </Canvas>
     </div>
   );
 }
 
-export function Wrapped() {
+export function Wrapped({ instanceId }) {
+  const freqVal = 8.6;
+  const ampVal = 9.4;
+  const speedVal = 0.58;
+  const lowerVal = 0.63;
+  const sinVal = 0.1;
   const width = window.innerWidth;
   const height = window.innerHeight;
   const scale = useAspect(width, height, 1);
@@ -37,50 +42,57 @@ export function Wrapped() {
   const [
     { color1, color2, color3, color4, color5, color6, ...otherControls },
     set,
-  ] = useControls(() => ({
-    color1: "#020510", // dark blue
-    color2: "#548CC7", // light blue
-    color3: "#D1E3F2", // very light blue
-    color4: "#0B4094", // medium blue
-    color5: "#E32614", // red
-    color6: "#D18BDF", // purple
+  ] = useControls(
+    instanceId,
+    () => ({
+      color1: "#000000", // dark blue
+      color2: "#e2d849", // light blue
+      color3: "#ffffff", // very light blue
+      color4: "#000000", // medium blue
+      color5: "#000000", // red
+      color6: "#0e5565", // purple
 
-    // Add randomize button
-    randomize: button(() => {
-      set({
-        color1: getRandomColor(),
-        color2: getRandomColor(),
-        color3: getRandomColor(),
-        color4: getRandomColor(),
-        color5: getRandomColor(),
-        color6: getRandomColor(),
-      });
+      // Add randomize button
+      randomize: button(() => {
+        set({
+          color1: getRandomColor(),
+          color2: getRandomColor(),
+          color3: getRandomColor(),
+          color4: getRandomColor(),
+          color5: getRandomColor(),
+          color6: getRandomColor(),
+        });
+      }),
+
+      frequency: { value: freqVal, min: 0.1, max: 30.0, step: 0.1 },
+      amplitude: { value: ampVal, min: 0.1, max: 100.0, step: 0.1 },
+      speed: { value: speedVal, min: 0.01, max: 5.0, step: 0.01 },
+      timeMultiplier: {
+        value: lowerVal,
+        min: 0.001,
+        max: 1.0,
+        step: 0.01,
+        label: "speed-lower",
+      },
+      mixLayer1: {
+        value: { a: 0.1, b: -0.9 },
+        min: -0.9,
+        max: 0.9,
+        step: 0.1,
+      },
+      mixLayer2: {
+        value: { a: -0.9, b: 0.3 },
+        min: -0.9,
+        max: 0.9,
+        step: 0.1,
+      },
+      sinMultiplier: { value: sinVal, min: 0.1, max: 30.0, step: 0.1 },
     }),
-
-    frequency: { value: 5.0, min: 0.1, max: 30.0, step: 0.1 },
-    amplitude: { value: 30.0, min: 0.1, max: 100.0, step: 0.1 },
-    speed: { value: 2.0, min: 0.01, max: 5.0, step: 0.01 },
-    timeMultiplier: {
-      value: 1.0,
-      min: 0.001,
-      max: 1.0,
-      step: 0.01,
-      label: "speed-lower",
-    },
-    mixLayer1: {
-      value: { a: 0.5, b: -0.3 },
-      min: -0.9,
-      max: 0.9,
-      step: 0.1,
-    },
-    mixLayer2: {
-      value: { a: -0.2, b: 0.4 },
-      min: -0.9,
-      max: 0.9,
-      step: 0.1,
-    },
-    sinMultiplier: { value: 3.0, min: 0.1, max: 30.0, step: 0.1 },
-  }));
+    {
+      folder: `Background Controls ${instanceId}`,
+      collapsed: true,
+    }
+  );
 
   const uniforms = useRef({
     iTime: {

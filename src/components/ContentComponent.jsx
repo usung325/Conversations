@@ -11,6 +11,7 @@ import VideoContent from "./VideoContent";
 import Bg1 from "./shaders/Bg1.jsx";
 import Bg2 from "./shaders/Bg2.jsx";
 import Bg3 from "./shaders/Bg3.jsx";
+import Bg4 from "./shaders/Bg4.jsx";
 import { cityContent } from "./textContentData";
 
 //this is the dynamic content page
@@ -22,7 +23,7 @@ export default function ContentComponent({ images }) {
     { itemCity: "New York", bg: Bg2 },
     { itemCity: "Los Angeles", bg: Bg3 },
     { itemCity: "Chicago", bg: Bg0 },
-    { itemCity: "Sydney", bg: Bg3 },
+    { itemCity: "Sydney", bg: Bg4 },
     { itemCity: "Providence", bg: Bg2 },
     { itemCity: "Suwanee", bg: Bg1 },
   ];
