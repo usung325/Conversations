@@ -42,7 +42,7 @@ export default function TextContent({ author, body, choreo, performer }) {
         </div>
 
         {/* Bottom section with choreo and performer */}
-        <div className="flex flex-col gap-3 ">
+        <div className="flex flex-col gap-3 ml-auto items-end">
           <p>choreo: {choreo}</p>
           <p>performance: {performer}</p>
         </div>

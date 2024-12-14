@@ -3,27 +3,27 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'PicNic';
-  src: url('/fonts/PicNic-Regular.woff2') format('woff2'),
-    url('/fonts/PicNic-Regular.woff') format('woff');
+  font-family: "PicNic";
+  src: url("/fonts/PicNic-Regular.woff2") format("woff2"),
+    url("/fonts/PicNic-Regular.woff") format("woff");
   font-weight: 300;
   font-display: swap;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Typefesse_Claire-Obscure';
-  src: url('/fonts/Typefesse_Claire-Obscure.woff2') format('woff2'),
-    url('/fonts/Typefesse_Claire-Obscure.woff') format('woff');
+  font-family: "Typefesse_Claire-Obscure";
+  src: url("/fonts/Typefesse_Claire-Obscure.woff2") format("woff2"),
+    url("/fonts/Typefesse_Claire-Obscure.woff") format("woff");
   font-weight: 300;
   font-display: swap;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Typefesse_Pleine';
-  src: url('/fonts/Typefesse_Pleine.woff2') format('woff2'),
-    url('/fonts/Typefesse_Pleine.woff') format('woff');
+  font-family: "Typefesse_Pleine";
+  src: url("/fonts/Typefesse_Pleine.woff2") format("woff2"),
+    url("/fonts/Typefesse_Pleine.woff") format("woff");
   font-weight: 300;
   font-display: swap;
   font-style: normal;
@@ -41,14 +41,15 @@
 }
 
 p {
-  font-size: 0.9em;
+  font-size: 0.8em;
   font-weight: 400;
   line-height: 1.4em;
-  font-family:  'adobe-garamond-pro', Garamond, 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', Times, sans-serif;
+  font-family: "adobe-garamond-pro", Garamond, "Baskerville",
+    "Baskerville Old Face", "Hoefler Text", "Times New Roman", Times, sans-serif;
 }
 
 h1 {
-  font-family: 'Typefesse_Claire-Obscure';
+  font-family: "Typefesse_Claire-Obscure";
   font-size: 0.8em;
 }
 

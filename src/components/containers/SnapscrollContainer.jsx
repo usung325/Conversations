@@ -55,7 +55,7 @@ export default function SnapScrollContainer({ children, isScrollRight }) {
   }, [handleScroll]);
 
   return (
-    <div className="flex flex-row justify-center items-center content-center gap-5 mx-auto -mt-10">
+    <div className="flex flex-row justify-center items-center content-center gap-5 mx-auto -mt-20">
       {!isScrollRight ? (
         <div>
           <div className="flex flex-col gap-2">
