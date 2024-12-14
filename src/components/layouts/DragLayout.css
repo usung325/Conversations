@@ -1,11 +1,11 @@
 .sliderContainer {
-  position: absolute;
+  position: fixed;
   /* background-color: orange; */
   z-index: 100;
   display: flex;
   /* align-items: center; */
   /* Add this */
-  /* overflow: hidden; */
+  overflow: hidden;
   /* Add this */
 }
 
@@ -13,6 +13,7 @@
   background-color: white;
   width: 4.5em;
   z-index: 1000000;
+  flex-shrink: 0;
 }
 
 .logoIcon {
@@ -26,6 +27,7 @@
   position: relative;
   white-space: nowrap;
   overflow: hidden;
+  width: calc(100% - 4.5em);
   /* Add this */
 }
 
