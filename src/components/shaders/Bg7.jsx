@@ -8,7 +8,7 @@ import { useControls, button, Leva } from "leva";
 
 export default function Bg7({ instanceId = "background7" }) {
   return (
-    <div className="w-screen h-screen overscroll-none">
+    <div className="w-screen h-screen overscroll-none fixed bottom-0">
       {/* <Leva hidden={true} /> */}
       <Canvas
         className="w-full h-full"
