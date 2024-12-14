@@ -205,8 +205,9 @@ export default function ContentComponent({ images }) {
               </div>
               <div className="flex space-y-52 -my-15 overflow-hidden">
                 <div className="flex h-screen">
-                  <div className="flex items-center justify-center gap-x-16 my-auto">
-                    <div className="flex ">
+                  <div className="grid grid-cols-[0px_40vw] md:flex md:flex-row items-center justify-center gap-x-16 md:gap-y-0 gap-y-8 my-auto w-full">
+                    {/* Text content container */}
+                    <div className="flex w-full">
                       <SnapScrollContainer isScrollRight={false}>
                         {currentCityContent.map((item) => (
                           <div>
@@ -220,7 +221,9 @@ export default function ContentComponent({ images }) {
                         ))}
                       </SnapScrollContainer>
                     </div>
-                    <div className="flex">
+
+                    {/* Video content container */}
+                    <div className="flex w-full">
                       <SnapScrollContainer isScrollRight={true}>
                         {currentCityContent.map((_, i) => (
                           <div>
