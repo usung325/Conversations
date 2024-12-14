@@ -226,35 +226,39 @@ export default function DragLayout({ images }) {
 
   return (
     <>
-      <div className="z-[900]">
-        {/* <img src="./images/Logo.png" className="absolute top-5 left-20 w-[2em]" /> */}
-        <div className="sliderContainer">
-          <div className="divider" />
-          <NavLink to={`/`} className="logoIcon absolute top-2 cursor-pointer">
-            <div
-              className="z-[10000]"
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
+      <div className="w-full h-screen fixed bottom-0">
+        <div className="z-[900]">
+          {/* <img src="./images/Logo.png" className="absolute top-5 left-20 w-[2em]" /> */}
+          <div className="sliderContainer">
+            <div className="divider" />
+            <NavLink
+              to={`/`}
+              className="logoIcon absolute top-2 cursor-pointer"
             >
-              <img
-                src={
-                  isHovering ? "./images/dance2.gif" : "./images/LogoGif.png"
-                }
-                className=" w-[6em]"
-                alt="Logo"
-              />
+              <div
+                className="z-[10000]"
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+              >
+                <img
+                  src={
+                    isHovering ? "./images/dance2.gif" : "./images/LogoGif.png"
+                  }
+                  className=" w-[6em]"
+                  alt="Logo"
+                />
+              </div>
+            </NavLink>
+            <div className="slider">
+              <h1>Conversations With My Straight Boyfriends-</h1>
+              <h1>Conversations With My Straight Boyfriends-</h1>
             </div>
-          </NavLink>
-          <div className="slider">
-            <h1>Conversations With My Straight Boyfriends-</h1>
-            <h1>Conversations With My Straight Boyfriends-</h1>
           </div>
-        </div>
 
-        {/* <p className="text-black text-sm inline-block ">Conversations With My Straight Boyfriends</p> */}
-      </div>
-      {/* debugging tool */}
-      {/* <div className="grid grid-cols-2 gap-x-10 text-2xl justify-start pl-[40vw] fixed top-0 left-0 z-10">
+          {/* <p className="text-black text-sm inline-block ">Conversations With My Straight Boyfriends</p> */}
+        </div>
+        {/* debugging tool */}
+        {/* <div className="grid grid-cols-2 gap-x-10 text-2xl justify-start pl-[40vw] fixed top-0 left-0 z-10">
                 <p className="text-orange-500">pos.x: {pos.x / window.innerWidth * 100}</p>
                 <p className="text-orange-500">pos.y: {pos.y / window.innerHeight * 100}</p>
 
@@ -268,52 +272,53 @@ export default function DragLayout({ images }) {
                 <p className="text-teal-900">offX: {pos.offX}</p>
                 <p className="text-teal-900">offY: {pos.offY}</p>
             </div> */}
-      <div
-        className="absolute left-1/2 tansform -translate-x-1/2 translate-y-[75vh] z-[900]"
-        onClick={() => handleRandomCentering()}
-      >
-        <DanceButton />
-      </div>
-
-      <div
-        className="w-full h-screen overflow-hidden relative cursor-grab active:cursor-grabbing"
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
-      >
-        <div ref={scope}>
-          {images.map((img, i) => (
-            <motion.div
-              whileHover={{ scale: 1.5 }}
-              style={{
-                left: img.x + "vw",
-                top: img.y + "vh",
-                width: img.width + "vw",
-                height: "auto",
-                position: "absolute",
-              }}
-              id={"im" + i}
-              className="imgDiv"
-            >
-              <nav>
-                <NavLink
-                  to={img.link}
-                  onClick={(e) => {
-                    if (isDragging) {
-                      e.preventDefault();
-                    }
-                  }}
-                >
-                  <img src={img.src} alt={img.alt || `image ${i}`} />
-                </NavLink>
-              </nav>
-            </motion.div>
-          ))}
+        <div
+          className="absolute left-1/2 tansform -translate-x-1/2 translate-y-[75vh] z-[900]"
+          onClick={() => handleRandomCentering()}
+        >
+          <DanceButton />
         </div>
-      </div>
-      <div className="absolute -z-10 top-0">
-        <LandingScene />
+
+        <div
+          className="w-full h-screen overflow-hidden relative cursor-grab active:cursor-grabbing"
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+        >
+          <div ref={scope}>
+            {images.map((img, i) => (
+              <motion.div
+                whileHover={{ scale: 1.5 }}
+                style={{
+                  left: img.x + "vw",
+                  top: img.y + "vh",
+                  width: img.width + "vw",
+                  height: "auto",
+                  position: "absolute",
+                }}
+                id={"im" + i}
+                className="imgDiv"
+              >
+                <nav>
+                  <NavLink
+                    to={img.link}
+                    onClick={(e) => {
+                      if (isDragging) {
+                        e.preventDefault();
+                      }
+                    }}
+                  >
+                    <img src={img.src} alt={img.alt || `image ${i}`} />
+                  </NavLink>
+                </nav>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+        <div className="fixed -z-10 bottom-0">
+          <LandingScene />
+        </div>
       </div>
     </>
   );
