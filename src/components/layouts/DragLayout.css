@@ -1,58 +1,57 @@
 .sliderContainer {
-    position: absolute;
-    /* background-color: orange; */
-    z-index: 100000;
-    display: flex;
-    /* align-items: center; */
-    /* Add this */
-    /* overflow: hidden; */
-    /* Add this */
+  position: absolute;
+  /* background-color: orange; */
+  z-index: 100;
+  display: flex;
+  /* align-items: center; */
+  /* Add this */
+  /* overflow: hidden; */
+  /* Add this */
 }
 
 .divider {
-    background-color: white;
-    width: 4.5em;
-    z-index: 1000000;
+  background-color: white;
+  width: 4.5em;
+  z-index: 1000000;
 }
 
 .logoIcon {
-    flex-shrink: 0;
-    z-index: 10000000;
-    /* background-color: white; */
-    /* Add this */
+  flex-shrink: 0;
+  z-index: 10000000;
+  /* background-color: white; */
+  /* Add this */
 }
 
 .slider {
-    position: relative;
-    white-space: nowrap;
-    overflow: hidden;
-    /* Add this */
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  /* Add this */
 }
 
 .slider h1 {
-    /* background-color: red; */
-    z-index: 100;
-    margin: 0;
-    color: black;
-    font-size: 80px;
-    /* Reduced for demo */
-    display: inline-block;
-    animation: slide 30s linear infinite;
-    /* Add this */
+  /* background-color: red; */
+  z-index: 100;
+  margin: 0;
+  color: black;
+  font-size: 80px;
+  /* Reduced for demo */
+  display: inline-block;
+  animation: slide 30s linear infinite;
+  /* Add this */
 }
 
 .slider h1:nth-of-type(2) {
-    position: absolute;
-    left: 100%;
-
+  position: absolute;
+  left: 100%;
 }
 
 @keyframes slide {
-    0% {
-        transform: translate(0, 0);
-    }
+  0% {
+    transform: translate(0, 0);
+  }
 
-    100% {
-        transform: translate(-100%, 0);
-    }
+  100% {
+    transform: translate(-100%, 0);
+  }
 }
