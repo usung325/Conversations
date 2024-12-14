@@ -280,7 +280,7 @@ export default function DragLayout({ images }) {
         </div>
 
         <div
-          className="w-full h-screen overflow-hidden relative cursor-grab active:cursor-grabbing"
+          className="w-full h-[calc(100vh-120px)] overflow-hidden relative cursor-grab active:cursor-grabbing"
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}

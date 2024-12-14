@@ -123,7 +123,7 @@ export default function ContentComponent({ images }) {
   return (
     <>
       <div className="relative w-full h-screen overflow-hidden">
-        <NavLink to={`/`} className="logoIcon absolute top-2">
+        <NavLink to={`/`} className="logoIcon fixed top-2">
           <div
             className="z-[10000]"
             onMouseEnter={() => setIsHovering(true)}
