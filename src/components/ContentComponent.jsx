@@ -114,7 +114,7 @@ export default function ContentComponent({ images }) {
     );
   }, []);
 
-  const [vidVisible, setVidVisible] = useState(true);
+  const [vidVisible, setVidVisible] = useState(false);
 
   const handleClick = () => {
     setVidVisible(!vidVisible);
