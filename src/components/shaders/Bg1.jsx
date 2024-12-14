@@ -9,7 +9,7 @@ import { useControls, button, Leva } from "leva";
 export default function Bg1({ instanceId = "background1" }) {
   return (
     <div className="w-screen h-screen">
-      <Leva hidden={true} />
+      {/* <Leva hidden={true} /> */}
       <Canvas
         className="w-full h-full"
         camera={{ fov: 50, position: [0, 0, 1.4] }}

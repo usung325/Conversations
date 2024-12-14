@@ -145,7 +145,7 @@ export default function BLanding({ instanceId = "landing" }) {
 
   return (
     <>
-      <Leva hidden={true} />
+      {/* <Leva hidden={true} /> */}
       <mesh ref={meshRef} scale={scale}>
         <planeGeometry args={[1, 1, 64, 64]} />
         <shaderMaterial
