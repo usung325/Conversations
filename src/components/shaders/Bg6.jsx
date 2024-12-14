@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useAspect } from "@react-three/drei";
-import fragment from "./page3/fragment.glsl";
-import vertex from "./page3/vertex.glsl";
+import fragment from "./page6/fragment.glsl";
+import vertex from "./page6/vertex.glsl";
 import * as THREE from "three";
 import { useControls, button, Leva } from "leva";
 
-export default function Bg3({ instanceId = "background3" }) {
+export default function Bg6({ instanceId = "background6" }) {
   return (
     <div className="w-screen h-screen">
       <Canvas
@@ -20,11 +20,11 @@ export default function Bg3({ instanceId = "background3" }) {
 }
 
 export function Wrapped({ instanceId }) {
-  const freqVal = 11.4;
-  const ampVal = 21.4;
-  const speedVal = 1.29;
-  const lowerVal = 1.0;
-  const sinVal = 13.5;
+  const freqVal = 22.2;
+  const ampVal = 85.2;
+  const speedVal = 0.35;
+  const lowerVal = 0.39;
+  const sinVal = 3.0;
   const width = window.innerWidth;
   const height = window.innerHeight;
   const scale = useAspect(width, height, 1);
@@ -45,12 +45,12 @@ export function Wrapped({ instanceId }) {
   ] = useControls(
     instanceId,
     () => ({
-      color1: "#74d5b6", // dark blue
-      color2: "#db94f4", // light blue
-      color3: "#e5afe7", // very light blue
-      color4: "#9f11c0", // medium blue
-      color5: "#000000", // red
-      color6: "#a5314a", // purple
+      color1: "#f56c0c", // dark blue
+      color2: "#d519e0", // light blue
+      color3: "#1ef05a", // very light blue
+      color4: "#891887", // medium blue
+      color5: "#56b973", // red
+      color6: "#b91676", // purple
 
       // Add randomize button
       randomize: button(() => {
@@ -81,7 +81,7 @@ export function Wrapped({ instanceId }) {
         step: 0.1,
       },
       mixLayer2: {
-        value: { a: -0.9, b: 0.9 },
+        value: { a: -0.2, b: 0.4 },
         min: -0.9,
         max: 0.9,
         step: 0.1,

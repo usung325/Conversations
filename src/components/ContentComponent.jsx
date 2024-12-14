@@ -12,6 +12,8 @@ import Bg1 from "./shaders/Bg1.jsx";
 import Bg2 from "./shaders/Bg2.jsx";
 import Bg3 from "./shaders/Bg3.jsx";
 import Bg4 from "./shaders/Bg4.jsx";
+import Bg5 from "./shaders/Bg5.jsx";
+import Bg6 from "./shaders/Bg6.jsx";
 import { cityContent } from "./textContentData";
 
 //this is the dynamic content page
@@ -24,8 +26,8 @@ export default function ContentComponent({ images }) {
     { itemCity: "Los Angeles", bg: Bg3 },
     { itemCity: "Chicago", bg: Bg0 },
     { itemCity: "Sydney", bg: Bg4 },
-    { itemCity: "Providence", bg: Bg2 },
-    { itemCity: "Suwanee", bg: Bg1 },
+    { itemCity: "Providence", bg: Bg5 },
+    { itemCity: "Suwanee", bg: Bg6 },
   ];
   const currentCityContent = cityContent[city]["performances"];
   console.log(currentCityContent[0]);
