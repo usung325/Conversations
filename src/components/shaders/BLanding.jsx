@@ -77,7 +77,9 @@ export default function BLanding({ instanceId = "landing" }) {
     }),
     {
       folder: `Background Controls ${instanceId}`,
-      collapsed: true,
+      collapsed: false,
+      drag: true,
+      position: { x: 200, y: 900 },
     }
   );
 
