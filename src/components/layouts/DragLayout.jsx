@@ -226,7 +226,7 @@ export default function DragLayout({ images }) {
 
   return (
     <>
-      <div className="w-full h-screen fixed bottom-0">
+      <div className="w-full h-screen fixed top-0">
         <div className="z-[900]">
           {/* <img src="./images/Logo.png" className="absolute top-5 left-20 w-[2em]" /> */}
           <div className="sliderContainer">
@@ -316,7 +316,7 @@ export default function DragLayout({ images }) {
             ))}
           </div>
         </div>
-        <div className="fixed -z-10 bottom-0">
+        <div className="fixed -z-10 top-0">
           <LandingScene />
         </div>
       </div>
