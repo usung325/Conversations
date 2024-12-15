@@ -83,7 +83,7 @@ export default function DragLayout({ images }) {
       vwConversion: oneViewWidth,
       vhConversion: oneViewHeight,
       windowMidX: window.innerWidth / 2,
-      windowMidY: window.innerHeight / 2,
+      windowMidY: window.innerHeight / 2 + (window.innerHeight / 100) * 2, // this is where you calculate the center
     });
   };
 
