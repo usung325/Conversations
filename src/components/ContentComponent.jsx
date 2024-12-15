@@ -86,7 +86,7 @@ export default function ContentComponent({ images }) {
             clearInterval(timer);
             return 0;
           }
-          return Math.max(prevOpacity - 0.005, 0);
+          return Math.max(prevOpacity - 0.007, 0);
         });
       }, 800);
     }, 30);
