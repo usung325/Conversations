@@ -20,7 +20,7 @@ class VignetteMaterial extends THREE.ShaderMaterial {
         uniform float intensity;
         varying vec2 vUv;
         void main() {
-          vec2 center = vec2(0.5, 0.5);
+          vec2 center = vec2(0.5, 0.48);
           float dist = distance(vUv, center);
           float vignette = smoothstep(0.4, 0.1, dist * 0.9);
           float vignetteIntensity = 1.0 - (vignette * intensity);
