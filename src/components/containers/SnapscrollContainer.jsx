@@ -15,7 +15,7 @@ function debounce(func, wait) {
 export default function SnapScrollContainer({
   children,
   isScrollRight,
-  color = "black",
+  color = "white",
 }) {
   const containerRef = useRef(null);
   const [isScrolling, setIsScrolling] = useState(false);

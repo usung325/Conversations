@@ -129,6 +129,9 @@ export default function ContentComponent({ images }) {
       <div
         className={`relative w-full h-screen overflow-hidden text-${currCityList.color}`}
       >
+      <div
+        className={`relative w-full h-screen overflow-hidden text-${currCityList.color}`}
+      >
         <NavLink to={`/`} className="logoIcon fixed top-2">
           <div
             className="z-[10000]"
@@ -137,6 +140,13 @@ export default function ContentComponent({ images }) {
           >
             <img
               src={
+                currCityList.color == "white"
+                  ? isHovering
+                    ? "./images/dance3White.gif"
+                    : "./images/dance3WhiteThumb.png"
+                  : isHovering
+                  ? "./images/dance3.gif"
+                  : "./images/dance3Thumb.png"
                 currCityList.color == "white"
                   ? isHovering
                     ? "./images/dance3White.gif"
@@ -179,6 +189,7 @@ export default function ContentComponent({ images }) {
           </div>
         )}
         {/* </div> */}
+        <div className="flex flex-col mx-10 max-h-screen overflow-hidden">
         <div className="flex flex-col mx-10 max-h-screen overflow-hidden">
           <div className="flex flex-row justify-between">
             {/* <div className="w-[15em]">
@@ -229,7 +240,10 @@ export default function ContentComponent({ images }) {
                     <div className="flex flex-row items-center justify-center gap-x-20 gap-y-8 my-auto w-full">
                       {/* Text content container */}
                       <div className="flex w-full">
-                        <SnapScrollContainer isScrollRight={false}>
+                        <SnapScrollContainer
+                          isScrollRight={false}
+                          color={currCityColor}
+                        >
                           {currentCityContent.map((item) => (
                             <div>
                               <TextContent
@@ -245,7 +259,10 @@ export default function ContentComponent({ images }) {
 
                       {/* Video content container */}
                       <div className="flex w-full">
-                        <SnapScrollContainer isScrollRight={true}>
+                        <SnapScrollContainer
+                          isScrollRight={true}
+                          color={currCityColor}
+                        >
                           {currentCityContent.map((_, i) => (
                             <div>
                               <VideoContent vidRef={vidList[i]} />
@@ -266,7 +283,10 @@ export default function ContentComponent({ images }) {
                             vidVisible ? "z-10" : "z-8 opacity-50"
                           }`}
                         >
-                          <SnapScrollContainer isScrollRight={false}>
+                          <SnapScrollContainer
+                            isScrollRight={false}
+                            color={currCityColor}
+                          >
                             {currentCityContent.map((_, i) => (
                               <div>
                                 <VideoContent vidRef={vidList[i]} />
@@ -279,7 +299,10 @@ export default function ContentComponent({ images }) {
                             vidVisible ? "opacity-20" : ""
                           }`}
                         >
-                          <SnapScrollContainer isScrollRight={false}>
+                          <SnapScrollContainer
+                            isScrollRight={false}
+                            color={currCityColor}
+                          >
                             {currentCityContent.map((item) => (
                               <div>
                                 <TextContent
