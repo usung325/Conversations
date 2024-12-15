@@ -246,7 +246,7 @@ export default function DragLayout({ images }) {
                       ? "./images/LogoLanding.gif"
                       : "./images/LogoLanding.png"
                   }
-                  className=" w-[5em]"
+                  className=" w-[4.5em] mt-2 ml-1"
                   alt="Logo"
                 />
               </div>
