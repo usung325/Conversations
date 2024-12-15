@@ -22,16 +22,18 @@ import { cityContent } from "./textContentData";
 export default function ContentComponent({ images }) {
   const { city } = useParams();
   const cityList = [
-    { itemCity: "Pittsburgh", bg: Bg1 },
-    { itemCity: "New York", bg: Bg2 },
-    { itemCity: "Los Angeles", bg: Bg3 },
-    { itemCity: "Chicago", bg: Bg7 },
-    { itemCity: "Sydney", bg: Bg4 },
-    { itemCity: "Providence", bg: Bg5 },
-    { itemCity: "Suwanee", bg: Bg6 },
+    { itemCity: "Pittsburgh", bg: Bg1, color: "white" },
+    { itemCity: "New York", bg: Bg2, color: "white" },
+    { itemCity: "Los Angeles", bg: Bg3, color: "white" },
+    { itemCity: "Chicago", bg: Bg7, color: "white" },
+    { itemCity: "Sydney", bg: Bg4, color: "white" },
+    { itemCity: "Providence", bg: Bg5, color: "slate-900" },
+    { itemCity: "Suwanee", bg: Bg6, color: "white" },
   ];
   const currentCityContent = cityContent[city]["performances"];
   console.log(currentCityContent[0]);
+  const currCityList = cityList.filter((item) => item.itemCity == city)[0];
+  console.log(currCityList);
   const [opacityVal, setOpacityVal] = useState(1);
   const vidList = images.find((e) => e.city === city).vidList;
   console.log(vidList[0]);
@@ -124,7 +126,9 @@ export default function ContentComponent({ images }) {
 
   return (
     <>
-      <div className="relative w-full h-screen overflow-hidden">
+      <div
+        className={`relative w-full h-screen overflow-hidden text-${currCityList.color}`}
+      >
         <NavLink to={`/`} className="logoIcon fixed top-2">
           <div
             className="z-[10000]"
@@ -133,9 +137,13 @@ export default function ContentComponent({ images }) {
           >
             <img
               src={
-                isHovering
-                  ? "./images/dance3White.gif"
-                  : "./images/dance3WhiteThumb.png"
+                currCityList.color == "white"
+                  ? isHovering
+                    ? "./images/dance3White.gif"
+                    : "./images/dance3WhiteThumb.png"
+                  : isHovering
+                  ? "./images/dance3.gif"
+                  : "./images/dance3Thumb.png"
               }
               className=" w-[6em]"
               alt="Logo"
@@ -171,7 +179,7 @@ export default function ContentComponent({ images }) {
           </div>
         )}
         {/* </div> */}
-        <div className="flex flex-col mx-10 text-white max-h-screen overflow-hidden">
+        <div className="flex flex-col mx-10 max-h-screen overflow-hidden">
           <div className="flex flex-row justify-between">
             {/* <div className="w-[15em]">
 

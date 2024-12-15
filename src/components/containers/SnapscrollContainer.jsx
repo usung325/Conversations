@@ -12,7 +12,11 @@ function debounce(func, wait) {
   };
 }
 
-export default function SnapScrollContainer({ children, isScrollRight }) {
+export default function SnapScrollContainer({
+  children,
+  isScrollRight,
+  color = "black",
+}) {
   const containerRef = useRef(null);
   const [isScrolling, setIsScrolling] = useState(false);
   const [pageIndex, setPageIndex] = useState(0);
@@ -60,10 +64,16 @@ export default function SnapScrollContainer({ children, isScrollRight }) {
         <div>
           <div className="flex flex-col gap-2">
             {pageNav.map((page, i) =>
-              pageIndex === i ? (
-                <img src="/images/active.png" className="max-w-1" />
+              color == "white" ? (
+                pageIndex === i ? (
+                  <img src="/images/active.png" className="max-w-1" />
+                ) : (
+                  <img src="/images/inactive.png" className="max-w-1" />
+                )
+              ) : pageIndex === i ? (
+                <img src="/images/activeBlack.png" className="max-w-1" />
               ) : (
-                <img src="/images/inactive.png" className="max-w-1" />
+                <img src="/images/inactiveBlack.png" className="max-w-1" />
               )
             )}
           </div>
@@ -86,10 +96,16 @@ export default function SnapScrollContainer({ children, isScrollRight }) {
         <div className="">
           <div className="flex flex-col gap-2 ">
             {pageNav.map((page, i) =>
-              pageIndex === i ? (
-                <img src="/images/active.png" className="max-w-1" />
+              color == "white" ? (
+                pageIndex === i ? (
+                  <img src="/images/active.png" className="max-w-1" />
+                ) : (
+                  <img src="/images/inactive.png" className="max-w-1" />
+                )
+              ) : pageIndex === i ? (
+                <img src="/images/activeBlack.png" className="max-w-1" />
               ) : (
-                <img src="/images/inactive.png" className="max-w-1" />
+                <img src="/images/inactiveBlack.png" className="max-w-1" />
               )
             )}
           </div>

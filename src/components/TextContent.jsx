@@ -26,7 +26,9 @@
 export default function TextContent({ author, body, choreo, performer }) {
   return (
     // Remove the pt-[20vh] and use flex with min-h-screen
-    <div className="h-[calc(100vh-2rem)] flex items-center justify-center pointer-events-none">
+    <div
+      className={`h-[calc(100vh-2rem)] flex items-center justify-center pointer-events-none`}
+    >
       {/* Container for the actual content */}
       <div className="flex flex-col justify-between">
         {/* Top section with author and body */}
