@@ -242,9 +242,11 @@ export default function DragLayout({ images }) {
               >
                 <img
                   src={
-                    isHovering ? "./images/dance2.gif" : "./images/LogoGif.png"
+                    isHovering
+                      ? "./images/LogoLanding.gif"
+                      : "./images/LogoLanding.png"
                   }
-                  className=" w-[6em]"
+                  className=" w-[5em]"
                   alt="Logo"
                 />
               </div>

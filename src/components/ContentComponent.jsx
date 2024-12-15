@@ -132,8 +132,8 @@ export default function ContentComponent({ images }) {
             <img
               src={
                 isHovering
-                  ? "./images/danceWhite.gif"
-                  : "./images/LogoGifWhite.png"
+                  ? "./images/dance3White.gif"
+                  : "./images/dance3WhiteThumb.png"
               }
               className=" w-[6em]"
               alt="Logo"
