@@ -27,13 +27,13 @@ export default function ContentComponent({ images }) {
     { itemCity: "Los Angeles", bg: Bg3, color: "white" },
     { itemCity: "Chicago", bg: Bg7, color: "white" },
     { itemCity: "Sydney", bg: Bg4, color: "white" },
-    { itemCity: "Providence", bg: Bg5, color: "slate-900" },
+    { itemCity: "Providence", bg: Bg5, color: "black" },
     { itemCity: "Suwanee", bg: Bg6, color: "white" },
   ];
   const currentCityContent = cityContent[city]["performances"];
   console.log(currentCityContent[0]);
   const currCityList = cityList.filter((item) => item.itemCity == city)[0];
-  console.log(currCityList);
+  const currCityColor = currCityList.color;
   const [opacityVal, setOpacityVal] = useState(1);
   const vidList = images.find((e) => e.city === city).vidList;
   console.log(vidList[0]);
@@ -88,7 +88,7 @@ export default function ContentComponent({ images }) {
             clearInterval(timer);
             return 0;
           }
-          return Math.max(prevOpacity - 0.007, 0);
+          return Math.max(prevOpacity - 0.005, 0);
         });
       }, 800);
     }, 30);
@@ -129,9 +129,6 @@ export default function ContentComponent({ images }) {
       <div
         className={`relative w-full h-screen overflow-hidden text-${currCityList.color}`}
       >
-      <div
-        className={`relative w-full h-screen overflow-hidden text-${currCityList.color}`}
-      >
         <NavLink to={`/`} className="logoIcon fixed top-2">
           <div
             className="z-[10000]"
@@ -140,13 +137,6 @@ export default function ContentComponent({ images }) {
           >
             <img
               src={
-                currCityList.color == "white"
-                  ? isHovering
-                    ? "./images/dance3White.gif"
-                    : "./images/dance3WhiteThumb.png"
-                  : isHovering
-                  ? "./images/dance3.gif"
-                  : "./images/dance3Thumb.png"
                 currCityList.color == "white"
                   ? isHovering
                     ? "./images/dance3White.gif"
@@ -189,7 +179,6 @@ export default function ContentComponent({ images }) {
           </div>
         )}
         {/* </div> */}
-        <div className="flex flex-col mx-10 max-h-screen overflow-hidden">
         <div className="flex flex-col mx-10 max-h-screen overflow-hidden">
           <div className="flex flex-row justify-between">
             {/* <div className="w-[15em]">
