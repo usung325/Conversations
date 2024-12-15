@@ -68,13 +68,15 @@ export default function ContentComponent({ images }) {
     images,
     pageImagesIndex
   );
-  console.log(imagesWithRelativePositions, "lol");
-  const newImages = imagesWithRelativePositions.filter(
-    (im) => im.city !== city
-  );
-  const newImagesWithoutOverlap = newImages.filter(
-    (obj) => Math.abs(obj.relativeX) > 80 || Math.abs(obj.relativeY) > 100
-  );
+  ///////////////////this is for filtering overlaps/current link/////////
+  //   (im) => im.city !== city
+  // );
+  const newImages = imagesWithRelativePositions;
+  // const newImagesWithoutOverlap = newImages.filter(
+  //   (obj) => Math.abs(obj.relativeX) > 80 || Math.abs(obj.relativeY) > 100
+  // );
+  const newImagesWithoutOverlap = newImages;
+  ////////////////////////////////////////////////////////////////////
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -151,8 +153,11 @@ export default function ContentComponent({ images }) {
                 className="animateDiv"
                 key={index}
                 style={{
-                  left: eachIm.relativeX * 4 + oneViewWidth,
-                  top: eachIm.relativeY * 2.7 + oneViewHeight,
+                  left:
+                    eachIm.relativeX * 4 +
+                    oneViewWidth -
+                    ((eachIm.width * oneViewWidth) / 5) * 0.5,
+                  top: eachIm.relativeY * 2.2 + oneViewHeight,
                   width: (eachIm.width * oneViewWidth) / 5,
                   position: "absolute",
                   opacity: opacityVal,
