@@ -230,7 +230,7 @@ export default function DragLayout({ images }) {
         <div className="z-[900]">
           {/* <img src="./images/Logo.png" className="absolute top-5 left-20 w-[2em]" /> */}
           <div className="sliderContainer">
-            <div className="divider" />
+            {/* <div className="divider" />
             <NavLink
               to={`/`}
               className="logoIcon absolute top-2 cursor-pointer"
@@ -250,7 +250,7 @@ export default function DragLayout({ images }) {
                   alt="Logo"
                 />
               </div>
-            </NavLink>
+            </NavLink> */}
             <div className="slider">
               <h1>Conversations With My Straight Boyfriends-</h1>
               <h1>Conversations With My Straight Boyfriends-</h1>
