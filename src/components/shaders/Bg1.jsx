@@ -21,11 +21,18 @@ export default function Bg1({ instanceId = "background1" }) {
 }
 
 export function Wrapped({ instanceId }) {
-  const freqVal = 8.6;
-  const ampVal = 9.4;
-  const speedVal = 0.58;
-  const lowerVal = 0.63;
-  const sinVal = 0.1;
+  const freqVal = 15.8;
+  const ampVal = 100.0;
+  const speedVal = 1.51;
+  const lowerVal = 0.99;
+  const sinVal = 5.5;
+  //original
+  // const freqVal = 8.6;
+  // const ampVal = 9.4;
+  // const speedVal = 0.58;
+  // const lowerVal = 0.63;
+  // const sinVal = 0.1;
+  //original
   const width = window.innerWidth;
   const height = window.innerHeight;
   const scale = useAspect(width, height, 1);
@@ -46,12 +53,20 @@ export function Wrapped({ instanceId }) {
   ] = useControls(
     instanceId,
     () => ({
-      color1: "#000000", // dark blue
-      color2: "#e2d849", // light blue
-      color3: "#ffffff", // very light blue
-      color4: "#000000", // medium blue
-      color5: "#000000", // red
-      color6: "#0e5565", // purple
+      //original
+      // color1: "#000000",
+      // color2: "#e2d849",
+      // color3: "#ffffff",
+      // color4: "#000000",
+      // color5: "#000000",
+      // color6: "#0e5565",
+      //original
+      color1: "#ffffff",
+      color2: "#d3f00c",
+      color3: "#0daa22",
+      color4: "#f6fele",
+      color5: "#f80d0d",
+      color6: "#37ca20",
 
       // Add randomize button
       randomize: button(() => {
@@ -76,13 +91,15 @@ export function Wrapped({ instanceId }) {
         label: "speed-lower",
       },
       mixLayer1: {
-        value: { a: 0.1, b: -0.9 },
+        // value: { a: 0.1, b: -0.9 },
+        value: { a: 0.9, b: -0.9 },
         min: -0.9,
         max: 0.9,
         step: 0.1,
       },
       mixLayer2: {
-        value: { a: -0.9, b: 0.3 },
+        // value: { a: -0.9, b: 0.3 },
+        value: { a: -0.9, b: 0.9 },
         min: -0.9,
         max: 0.9,
         step: 0.1,
